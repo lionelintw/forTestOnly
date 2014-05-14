@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html>
+<html lang="zh-tw">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width">
+	<title>比fitvids.js差強人意, 純使用CSS的Responsive Iframe</title>
+<style>
+		.responsive {
+        position: relative;
+        height:0
+        overflow: hidden;
+    }
+    .responsive iframe, object, embed {
+        max-width: 100% !important;
+    }
+</style>          
+</head>
+<body>
+<!--[if lt IE 8]>
+            <p class="chromeframe">您正使用過氣的瀏覽器請至. <a href="http://browsehappy.com/">馬上升級您的瀏覽器</a> 或 <a href="http://www.google.com/chromeframe/?redirect=true">安裝 Google Chrome Frame</a> 以增進您瀏覽本頁面的體驗.</p>
+<![endif]-->
+<figure><div class="responsive"><iframe src="http://player.vimeo.com/video/28523422?title=0&amp;byline=0&amp;portrait=0&amp;color=4584be" width="800" height="600" frameborder="0" style="border:0"></iframe></div></figure>    
+</body>
+</html>
