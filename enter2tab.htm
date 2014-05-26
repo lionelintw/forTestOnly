@@ -1,0 +1,53 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="author" content="lionel" />
+	<title>Enter to tab test</title>
+<!--[if lt IE 9]>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<![endif]-->
+<!--[if gte IE 9]><!-->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+<![endif]-->
+</head>
+
+<body>
+<div><input /><select><option>test</option><option>test</option></select></div><div><input type="checkbox" id="ck" /><label for="ck">test</label><select multiple="multiple"><option>test</option><option>test</option></select></div><input type="radio" id="t1" /><label for="t1">test</label><input /><input />
+<script>
+//*
+function enter2tab(event){//enter to tab
+            var event = event || window.event;
+            if (event.keyCode == 13 && $(this).attr("type") != "hidden") {
+            	if(event.preventDefault) {event.preventDefault();}else{event.returnValue = false;}
+                var fields = $(this).parents("body").find(":input");
+                var indexs = fields.index(this);
+                if (indexs > -1 && (indexs + 1) < fields.length) {
+                    fields.eq(indexs + 1).focus();
+                }
+                else{fields.eq(0).focus();}
+                $(this).blur();
+            }
+}
+$(":input").keypress(enter2tab);        
+//*/
+/*
+$(document).ready(function(){
+    $(":input").keypress(function (evt) {//enter to tab
+        var evt = evt || window.event;
+        if (evt.keyCode == 13 && $(this).attr("type") != "hidden") {
+                if(evt.preventDefault) {evt.preventDefault();}else{evt.returnValue = false;}
+                var fields = $(this).parents("body").find(":input");
+                var index = fields.index(this);
+                if (index > -1 && (index + 1) < fields.length) {
+                    fields.eq(index + 1).focus();
+                }
+                else{fields.eq(0).focus();}
+                $(this).blur();
+        }
+    });
+});
+//*/
+</script>
+</body>
+</html>
