@@ -1,0 +1,104 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<title>A Simple Accordion</title>
+<!--[if lt IE 9]>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<![endif]-->
+<!--[if gte IE 9]><!-->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+<![endif]-->
+<style type="text/css" title="text/css">
+<!--
+body{	
+	font-family: 微軟正黑體;
+}
+.cta{
+	background-color: #eee;
+	-moz-border-radius: 6px;
+	-webkit-border-radius: 6px;
+	border-radius: 6px;
+	border:1px solid #aaa;
+	padding: 0em 1em;
+	margin:1em 0em;
+}
+.cta .question, .cta .answer{
+    padding-top:5px;
+	padding-bottom:5px;
+}
+
+.tools{
+    float:right; 
+}    
+-->
+</style>
+</head>
+
+<body>
+<h4>分類一</h4>
+<div id="accordion1" class="cta">
+<div class="question">男朋友和老公有何差別？<span class="tools"><a class="edit" href="javascript:void(0);">編輯</a>&nbsp;&nbsp;&nbsp;<a class="delete" href="javascript:void(0);">刪除</a></span></div>
+<div class="answer">差45分鐘。
+</div>
+<div class="question">為何發生事故後要立即報警處理？<span class="tools"><a class="edit" href="javascript:void(0);">編輯</a>&nbsp;&nbsp;&nbsp;<a class="delete" href="javascript:void(0);">刪除</a></span></div>
+<div class="answer">(一)由公正第三人的警方來處理事故，可確保自身的民事權益。
+(二)可確定自身並無肇事逃逸之責。
+(三)警方現場收集採證並研判雙方肇事責任，以為保險理賠之依據。
+(四)日後若有訴訟情事，有警方記錄為憑，並確保保險公司之代位求償權。
+</div>
+<div class="question">當女朋友問你 ，我跟你媽都不會游泳且同時掉到海裡 ，你會“先”救誰？！<span class="tools"><a class="edit" href="javascript:void(0);">編輯</a>&nbsp;&nbsp;&nbsp;<a class="delete" href="javascript:void(0);">刪除</a></span></div>
+<div class="answer">依法行政 謝謝指教^^
+</div>
+</div>
+<h4>分類二</h4>
+<div id="accordion2" class="cta">
+<div class="question">Offer是外包合同，我該簽嗎？<span class="tools"><a class="edit" href="javascript:void(0);">編輯</a>&nbsp;&nbsp;&nbsp;<a class="delete" href="javascript:void(0);">刪除</a></span></div>
+<div class="answer"> 外包並非不是不能轉正，當你發揮的作用和價值到達一定程度，還是有機會的。
+</div>
+<div class="question">試用期被逼辭退，如何維權？<span class="tools"><a class="edit" href="javascript:void(0);">編輯</a>&nbsp;&nbsp;&nbsp;<a class="delete" href="javascript:void(0);">刪除</a></span></div>
+<div class="answer">試用期是企業和員工互相考察的過程，沒有誠信的公司離開也罷，但離職時必須把該拿的都拿了！
+</div>
+<div class="question">請問床墊搬運至一般公寓是否會酌收額外費用?<span class="tools"><a class="edit" href="javascript:void(0);">編輯</a>&nbsp;&nbsp;&nbsp;<a class="delete" href="javascript:void(0);">刪除</a></span></div>
+<div class="answer">一般公寓的運送並不會酌收額外費用哦。
+</div>
+</div>
+<script>
+        $(document).ready(function(){
+        //just some regular style sheets. change them as you see fit
+        var styling =".question{font-size:16px; font-weight:bold; cursor:pointer;}" +
+                      ".answer{display:block;}" +
+                      ".opened{color:#000;}" +
+                      ".closed{color:#888;}";        
+        //attach style to the page
+        var style = document.createElement("style");
+        style.type = "text/css";
+        try {
+            style.appendChild( document.createTextNode(styling) );
+        } catch (e) {
+            if (style.styleSheet) {
+                style.styleSheet.cssText = styling;
+            }
+        }
+        document.body.appendChild(style);
+        //style all questions as closed
+        $(".question").addClass("closed"); 
+        //make sure first question is styled as open
+        $(".question:first").removeClass("closed").addClass("opened"); 
+        $(".answer").hide(); //hide answers
+        $(".answer:first").show(); //show first answer
+        $(".tools").click(function() {return false;});            
+        //question click
+        $(".question").click(function() {
+            $(".answer").slideUp("fast");
+            $(".question").removeClass("opened").addClass("closed");
+     
+            if ($(this).next(".answer").is(":hidden")) {
+                $(this).next(".answer").slideDown("fast");
+                $(this).removeClass("closed").addClass("opened");
+            }             
+        });
+});
+</script>
+</body>
+</html>
