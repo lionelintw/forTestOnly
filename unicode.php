@@ -1,5 +1,5 @@
 ﻿<?php
-function unicode($str = "", $charset = "unicode", $op = "encode")//UTF8字串與Unicode/UTF8碼之間的轉換/還原
+function unicode($str = "", $charset = "unicode", $op = "encode")//UTF8字串與Unicode/UTF8編碼之間的轉換/還原
 {
     if ($charset == "unicode")
     {
