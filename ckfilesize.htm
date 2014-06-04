@@ -1,7 +1,11 @@
 <!DOCTYPE HTML>
 <html>
 <head>
+<<<<<<< HEAD
 	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+=======
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+>>>>>>> 9f95a526af1567e99a0f560da142c5d038d2739d
 	<title>JQuery to preview image and check file(s) size</title>
 <!--[if lt IE 9]>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
@@ -15,10 +19,17 @@
 <input type="file" name="file2" class="file" /><br />
 <input type="file" name="file3" class="file" /><br />
 <script>
+<<<<<<< HEAD
 $("document").ready(function () {	
     function chksize(){
         var s = 0;
         $(".file").each(function () {
+=======
+$("document").ready(function() {	
+    function chksize(){
+        var s = 0;
+        $(".file").each(function(){
+>>>>>>> 9f95a526af1567e99a0f560da142c5d038d2739d
             if($(this).val()){                
              /*@cc_on 
              if (@_jscript_version <= 9){
@@ -36,7 +47,11 @@ $("document").ready(function () {
                     var objFSO = new ActiveXObject("Scripting.FileSystemObject");
                     var sPath = $(this).val();
                     var objFile = objFSO.getFile(sPath);
+<<<<<<< HEAD
                     var f = objFile.size / 1024;
+=======
+                    var f = objFile.size/1024;
+>>>>>>> 9f95a526af1567e99a0f560da142c5d038d2739d
                 }
                 catch (e) 
                 {
@@ -60,7 +75,11 @@ $("document").ready(function () {
                 document.getElementById(img_id2).style.width = "200px";
                 //document.getElementById(img_id2).style.height = "200px";
                 };
+<<<<<<< HEAD
                 var f = this.files[0].size / 1024;
+=======
+                var f = this.files[0].size/1024;
+>>>>>>> 9f95a526af1567e99a0f560da142c5d038d2739d
              }            
 			 s += f;
             }
@@ -85,7 +104,11 @@ $("document").ready(function () {
         }
         alert(s);
     }
+<<<<<<< HEAD
     $(".file").change(function () {
+=======
+    $(".file").change(function() {
+>>>>>>> 9f95a526af1567e99a0f560da142c5d038d2739d
         try
         {
             chksize();
