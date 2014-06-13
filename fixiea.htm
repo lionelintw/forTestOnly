@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<title>中文假文</title>
+
+	<style>
+		body{
+			font-family: Helvetica, arial, sans-serif;
+			width:800px;
+			margin:150px auto;
+		}
+		img{
+			width:400px;
+			height:300px;
+			float:right;
+			margin:20px;
+		}
+	</style>
+<!--為了讓IE支援一些HTML5-->
+<!--[if IE]>  
+<script src="http://flashguy.byethost32.com/js/modernizr.js"></script>  
+<![endif]-->
+</head>
+<body>
+	<article>
+		<h1 class="fixie"></h1>
+		<p> 連網址也假 <a class="fixie"></a>.</p>
+		<section class="fixie">
+			<p></p>
+			<img/>
+			<ul></ul>
+			<p></p>
+			<ol></ol>
+		</section>
+		<h2 class="fixie"></h2>
+		<section class="fixie"></section>
+	</article>
+
+	<script type="text/javascript" src="http://flashguy.byethost32.com/fixie/fixiea.php"></script>
+	<script>
+		// Changes default image source
+		fixie.setImagePlaceholder('http://lorempixel.com/${w}/${h}/${text}').init();
+	</script>
+</body>
+</html>
