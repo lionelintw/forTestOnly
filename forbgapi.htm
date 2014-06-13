@@ -1,0 +1,40 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<title>載入隨機圖API使用範例</title>
+<!--[if lt IE 9]>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<![endif]-->
+<!--[if gte IE 9]><!-->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+<![endif]-->	
+<script src="http://flashguy.byethost32.com/forbgapi.php"></script>
+</head>
+
+<body>
+<!--[if lt IE 8]>
+            <h1 class="chromeframe">您正使用不支援本API主要功能的瀏覽器,請至. <a href="http://browsehappy.com/">馬上升級您的瀏覽器</a> 或 <a href="http://www.google.com/chromeframe/?redirect=true">安裝 Google Chrome Frame</a> 以增進您瀏覽本頁面的體驗.</h1>
+<![endif]-->
+<textarea cols="100" rows="10" wrap="virtual">
+載入API(瀏覽器需允許使用coockie)
+&lt;head&gt;&lt;/head&gt;間貼上&lt;script src=&quot;http://flashguy.byethost32.com/forbgapi.php&quot;&gt;&lt;/script&gt;
+使用方法
+&lt;body&gt;&lt;/body&gt;間貼上&lt;img src=&quot;imgApi&quot; /&gt;
+即可取得隨機圖檔s
+而如有需要在javascript中載入單一隨機圖檔url,可使用picurl變數呼叫,例如&lt;script&gt;alert(picurl)&lt;/script&gt;,
+或如本範例載入當成背景圖使用
+</textarea><br/>
+<script src="https://github.com/srobbin/jquery-backstretch/raw/master/jquery.backstretch.min.js"></script>
+<script>
+jQuery.backstretch(
+      picurl, {
+        fade: 750,
+        duration: 500
+    }
+      );
+</script>
+<h2>隨機圖1</h2><img title="隨機圖1" class="imgApi" width="400"/>
+<h2>隨機圖2</h2><img title="隨機圖2" class="imgApi" width="400"/>
+</body>
+</html>
