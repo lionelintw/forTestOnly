@@ -45,7 +45,7 @@ $("document").ready(function () {
                 
              }  
              @*/               
-             if((document.documentMode > 9) || document.addEventListener)
+             if(document.documentMode > 9)
              {
                 $(this).next().remove("img");             	
                 var img2 = new Image();
