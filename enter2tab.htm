@@ -15,34 +15,40 @@
 <body>
 <div><input /><select><option>test</option><option>test</option></select></div><div><input type="checkbox" id="ck" /><label for="ck">test</label><select multiple="multiple"><option>test</option><option>test</option></select></div><input type="radio" id="t1" /><label for="t1">test</label><input /><input />
 <script>
-//*
+/*
 function enter2tab(event){//enter to tab
             var event = event || window.event;
             if (event.keyCode == 13 && $(this).attr("type") != "hidden") {
+                if ($(this).attr("type") == "file") {alert("如果您的瀏覽器遇到檔案欄位時,按Enter是開啟選取檔案視窗,請改按Tab鍵跳脫");}
             	if(event.preventDefault) {event.preventDefault();}else{event.returnValue = false;}
                 var fields = $(this).parents("body").find(":input");
                 var indexs = fields.index(this);
                 if (indexs > -1 && (indexs + 1) < fields.length) {
                     fields.eq(indexs + 1).focus();
                 }
-                else{fields.eq(0).focus();}
+                else{
+                    fields.eq(0).focus();
+                }
                 $(this).blur();
             }
 }
 $(":input").keypress(enter2tab);        
 //*/
-/*
+//*
 $(document).ready(function(){
-    $(":input").keypress(function (evt) {//enter to tab
+		$(":input").keypress(function (evt) {//enter to tab
         var evt = evt || window.event;
         if (evt.keyCode == 13 && $(this).attr("type") != "hidden") {
+				if ($(this).attr("type") == "file") {alert("如果您的瀏覽器遇到檔案欄位時,按Enter是開啟選取檔案視窗,請改按Tab鍵跳脫");}
                 if(evt.preventDefault) {evt.preventDefault();}else{evt.returnValue = false;}
                 var fields = $(this).parents("body").find(":input");
                 var index = fields.index(this);
                 if (index > -1 && (index + 1) < fields.length) {
                     fields.eq(index + 1).focus();
                 }
-                else{fields.eq(0).focus();}
+                else{
+                	fields.eq(0).focus();
+                	}
                 $(this).blur();
         }
     });
