@@ -40,13 +40,13 @@ if (strpos($_SERVER["HTTP_USER_AGENT"], "MSIE") !== false)
     header("Cache-Control: no-cache");
 }
 header("Expires: -1");
+header("Content-Length: " . filesize($targetFile));
 /*
 ob_start();
 ob_end_clean();
 //上兩行註解程式碼在此可與下兩行程式碼互相替換*/
 ob_clean();
 flush();
-header("Content-Length: " . filesize($targetFile));
 readfile($targetFile);
 //header("X-Sendfile: $targetFile");//for very large files with PHP,如使用Apache模組可取代上兩行,參見https://tn123.org/mod_xsendfile/
 /*
@@ -58,7 +58,7 @@ while (!feof($fh)) {
     flush();
 }
 //另一種下載大檔可選用方法,用以取代readfile($targetFile)這行*/
-exit;
+//exit;
 }
 }
 $dl = new dl;
