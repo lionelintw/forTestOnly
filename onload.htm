@@ -17,9 +17,17 @@ function init() {
   // do stuff
   alert("Page loaded!");
 }
+/* for Mozilla/Opera/IE */
+if (document.addEventListener) {
+  document.addEventListener("DOMContentLoaded", init, false);
+}
+else if(document.attachEvent){
+document.attachEvent("onDOMContentLoaded", init);
+}	
+else{;
 /* for old Internet Explorer */
 /*@cc_on 
-if (@_jscript_version < 9){
+if (@_jscript_version < 6){
   document.write("<script id=__ie_onload defer src=javascript:void(0)><\/script>");
   var script = document.getElementById("__ie_onload");
   script.onreadystatechange = function() {
@@ -29,14 +37,7 @@ if (@_jscript_version < 9){
   };
 }  
 @*/
-/* for Mozilla/Opera/IE */
-if (document.addEventListener) {
-  document.addEventListener("DOMContentLoaded", init, false);
 }
-else if(document.attachEvent){
-document.attachEvent("onDOMContentLoaded", init);
-}	
-else{;}
 
 /* for Safari */
 if (/WebKit/i.test(navigator.userAgent)) { // sniff
