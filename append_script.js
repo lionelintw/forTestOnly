@@ -26,7 +26,7 @@ if (@_jscript_version < 6){
   document.write("<script id=__ie_onload defer src=javascript:void(0)><\/script>");
   var script = document.getElementById("__ie_onload");
   script.onreadystatechange = function() {
-    if (this.readyState == "complete") {
+    if (this.readyState == "loaded" || this.readyState == "complete") {
       init(); // call the onload handler
     }
   };
