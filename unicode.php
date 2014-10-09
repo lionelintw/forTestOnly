@@ -23,12 +23,8 @@ function unicode($str = "", $charset = "unicode", $op = "encode")//UTF8字串與
         {
             $i = 0;
             $unicode_html = "";
-            $Strlen = mb_strlen($str, 'utf8');
-            for ($i = 0; $i < $Strlen; $i++)
-            {
-                // 將 &#25105 轉回 '我'
-                $unicode_html .= mb_convert_encoding(mb_substr($str, $i, 1, 'utf8'), 'UTF-8', 'HTML-ENTITIES'); // '我', $unicode_html = '&#25105'
-            }
+            // 將 &#25105 轉回 '我'
+            $unicode_html = mb_convert_encoding($str, 'UTF-8', 'HTML-ENTITIES'); // '我', $unicode_html = '&#25105'
         }
 
         return $unicode_html;
