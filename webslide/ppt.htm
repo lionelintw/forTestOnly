@@ -1,0 +1,457 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>JavaScript</title>
+	<link rel="stylesheet" href="./src/css/index.css" />
+	<link rel="stylesheet" href="./src/css/webslide.css" />
+	<link rel="stylesheet" href="./src/css/codecolorer.css" />
+<!--[if lt IE 9]>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<![endif]-->
+<!--[if gte IE 9]><!-->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+<![endif]-->
+<script src="./src/public/jquery.syntax.js" type="text/javascript"></script>
+<script src="./src/public/jquery.syntax.cache.js" type="text/javascript"></script>
+<script src="https://maps.googleapis.com/maps/api/js?sensor=true"></script>	
+</head>
+<body>
+
+<div id="slide" >
+<div class="slides">
+	<section id="cover" class="step" >
+		<section class="title">
+			<h1>JavaScript簡介</h1>
+			<h2>Lionel</h2>
+			<h3><a href="http://tinyurl.com/q268ffe">http://tinyurl.com/q268ffe</a></h3>
+		</section>
+	</section>
+	<section id="slide1" class="step slide">
+		<h1 class="header">談些什麼？</h1>
+		<ul>
+			<li>JavaScript是？</li>
+			<li class="slide">DOM基本知識介紹</li>
+			<li class="slide">JSON & JSONP</li>
+			<li class="slide">HTML5</li>
+			<li class="slide">Node.js</li>
+			<li class="slide">其他</li>
+		</ul>
+	</section>
+	
+	<section id="slide2" class="step slide rebuild">
+		<h1 class="header"><a href="http://www.tiobe.com/index.php/content/paperinfo/tpci/index.html">2015年 TIOBE程式語言排行榜</a></h1>
+		<ul data-build>
+			<li><img src="./src/img/j1.jpg"></li>
+		</ul>
+	</section>
+
+	<section id="slide3" class="step slide rebuild">
+		<h1 class="header">什麼是JavaScript</h1>
+		<ul data-build>
+			<li>是一種網路語法語言</li>
+			<li>ECMAScript標準</li>
+			<li>JavaScript和JScript</li>
+			<li>因表單驗證而生，但不僅僅是驗證表單</li>
+		</ul>
+	</section>
+	
+	<section id="step10" class="step slide rebuild">
+		<h1>DOM</h1>
+		<ul>
+			<li>文件物件模型(Document Object Model)，通常簡稱為DOM，是網站內容與JavaScript互通的節點。自JavaScript成為最常用的語言時JavaScript和DOM通常被視為獨立的實體。DOM節點用於存取、遍歷和控制HTML和XML文件</li>
+		</ul>
+		
+		
+		<pre class="syntax html">
+&lt;html&gt;
+     &lt;head&gt;
+         &lt;title&gt;Sample Page&lt;/title&gt;
+     &lt;/head&gt;
+     &lt;body&gt;
+         &lt;p&gt;hello world!&lt;/p&gt;
+     &lt;/body&gt;
+&lt;/html&gt;</pre>
+		
+		<div data-build><img src="./src/img/udc2.png" style="position:absolute;right:50px;top:300px;"/>
+		</div>
+	</section>
+<div id="idName" node-type="hello" style="display:none;">
+		<ul id="ul">
+			<li>i am 1</li>
+			<li>i am 2</li>
+			<li>i am 3</li>
+		</ul>
+	</div>
+	
+	<script type="text/javascript">
+		var $demoNode = document.getElementById('idName');
+	</script>	
+	<section id="dom1" class="step slide">
+		<h1>取得DOM節點</h1>
+
+<pre class="syntax html">&lt;div id=&quot;idName&quot; node-type=&quot;hello&quot;&gt;
+     &lt;ul id=&quot;ul&quot;&gt;
+         &lt;li&gt;i am 1&lt;/li&gt;
+         &lt;li&gt;i am 2&lt;/li&gt;
+         &lt;li&gt;i am 3&lt;/li&gt;
+     &lt;/ul&gt;
+&lt;/div&gt;</pre>
+<br/><br/>
+
+		
+		<h2>document.getElementById <button onclick="alert($demoNode.innerHTML)">RUN</button></h2>
+<pre class="syntax javascript">
+var node = document.getElementById('idName');
+alert(node.innerHTML);</pre>
+		<h2>node.getElement<span style="color:red">s</span>ByTagName <button onclick="alert($demoNode.getElementsByTagName('li'))">RUN</button></h2>
+		
+		<pre class="syntax javascript">
+//取得li的nodelist組合
+var node = document.getElementById('ul');
+node.getElementsByTagName('li');</pre>
+		
+		</section>
+	<section id="dom2" class="step slide">
+		<h2>取得節點屬性：node.getAttribute/setAttribute</h2>
+		
+<pre class="syntax html">&lt;div id=&quot;idName&quot; node-type=&quot;hello&quot;&gt;
+     &lt;ul id=&quot;ul&quot;&gt;
+         &lt;li&gt;i am 1&lt;/li&gt;
+         &lt;li&gt;i am 2&lt;/li&gt;
+         &lt;li&gt;i am 3&lt;/li&gt;
+     &lt;/ul&gt;
+&lt;/div&gt;</pre>
+
+		<br/>
+	<pre class="syntax javascript">
+var myNode = document.getElementById('idName');
+myNode.getAttribute('node-type');</pre>
+	
+	<p><button onclick="alert($demoNode.getAttribute('node-type'))">取得node-type</button></p>
+	
+	<pre class="syntax javascript">
+var myNode = document.getElementById('idName');
+myNode.setAttribute('node-type','world');</pre>
+	
+	<p><button onclick="$demoNode.setAttribute('node-type','world');alert('修改成功')">修改node-type</button></p>
+	</section>
+	
+	<section id="dom3" class="step slide">
+		<h2>生成和刪除節點</h2>
+		
+		<p id="cNode"><b>實例</b>：hello </p>
+		<pre class="syntax html">
+ &lt;p id="cNode"&gt;hello  &lt;/p&gt;</pre>
+		
+		
+		<pre class="syntax javascript">
+//生成元素節點
+var $span = document.createElement('span');
+//生成文字節點
+var $text = document.createTextNode('world!');
+$span.style.color = 'red';//給點color see see
+$span.appendChild($text);
+//取得插入父節點
+var node = document.getElementById('cNode');
+node.appendChild($span);</pre>
+<p>生成：createElement/createTextNode<button onclick="createNode()">生成節點</button></p>		
+		
+	<pre class="syntax javascript">
+var node = document.getElementById('cNode');//取得p
+node = node.getElementsByTagName('span')[0];//取得span列表，取第一個
+node.parentNode.removeChild(node);//刪除</pre>
+<p>刪除：.removeChild<button onclick="removeNode()">刪除節點</button></p>	
+	<script type="text/javascript">
+function createNode(){
+//生成元素節點
+var $span = document.createElement('span');
+//生成文字節點
+var $text = document.createTextNode('world!');
+$span.style.color = 'red';//給點color see see
+$span.appendChild($text);
+//取得插入父節點
+var node = document.getElementById('cNode');
+node.appendChild($span);
+}
+function removeNode(){
+var node = document.getElementById('cNode').getElementsByTagName('span')[0];
+node.parentNode.removeChild(node);
+}
+</script>
+	</section>
+	
+	<section id="json" class="step slide rebuild">
+		<h1>JSON</h1>
+		<p>JSON(JavaScript Object Notation) 是一種輕量級的數據交換格式</p>
+		<p><a href="http://www.json.org">http://www.json.org</a></p>
+		<div data-build>
+		
+		<pre class="syntax javascript">
+{
+ 　"name":"張三",
+ 　"password":"123456",
+ 　"department":"技術部",
+ 　"sex":"男",
+ 　"old":30
+}</pre>
+		
+		<pre class="syntax html">
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;user&gt;
+&lt;name&gt;張三&lt;/name&gt;
+&lt;password&gt;123456&lt;/password&gt;
+&lt;department&gt;技術部&lt;/department&gt;
+&lt;sex&gt;男&lt;/sex&gt;
+&lt;old&gt;30&lt;/old&gt;
+&lt;/user&gt;</pre>
+
+</div>
+	</section>
+	
+	
+	<section id="jsonp" class="step slide rebuild">
+		<h1>JSONP</h1>
+		<p>JSONP是一個非官方的協議，它允許在伺服器端集成Script tags返回至客戶端，通過javascript callback的形式實現跨域存取</p>
+		<div data-build>
+		Server 1			
+<pre class="syntax html">			
+&lt;script type=&quot;text/javascript&quot; 
+src=&quot;http://server2.example.com/RetrieveUser?UserName=張三&jsonp=parseResponse&quot;&gt;
+ &lt;/script&gt;
+</pre>
+<br/>
+Server 1 Callback
+<pre class="syntax javascript">
+parseResponse({
+ 　"name":"張三",
+ 　"password":"123456",
+ 　"department":"技術部",
+ 　"sex":"男",
+ 　"old":30
+});
+</pre>	
+		</div>
+		
+	</section>
+	
+	<section id="html5" class="step slide rebuild">
+		<h2>HTML5</h2>
+		<p><a href="http://dev.w3.org/html5/spec/">規格</a></p>
+		<ul data-build>
+			<li>(x)html和DOM標準，仍將繼續使用，不過現今的瀏覽器已經開始支援html5</li>
+			<li>語義化標記(&lt;header&gt;&lt;footer&gt;&lt;aside&gt;&lt;nav&gt;&lt;section&gt;&lt;article&gt; 等)</li>
+			<li>圖像處理(&lt;canvas&gt;)</li>
+			<li>媒體支援(&lt;video&gt;)</li>
+			<li>改善用戶界面</li>
+			<li>網路儲存</li>
+			<li>網路通信</li>
+			<li>移動設備支援</li>
+			<li>增強可存取性(ARIA role)</li>
+		</ul>
+		<img src="./src/img/udc9.png" style="position:absolute;right:300px;top:300px;" />
+	</section>
+	
+	<section id="map" class="step slide rebuild">
+		<h2>HTML5實例：地圖定位(Geolocation API)</h2>
+		<!--<div style="width:500px;height:400px;border:#ccc solid 1px;margin:0 auto;" id="dituContent"></div>
+		<center><button onclick="initMap();">顯示地圖</button>
+		<button onclick="getGeo()">定位</button></center>-->
+		現在位置: <span id="status">定位中...</span><div id="dituContent" style="width:500px;height:400px"></div>
+		<p><a href="http://tinyurl.com/q6kkvjn">應用版(移動定位+地址+開車建議路線)</a></p>
+	</section>
+	
+	<!--<script type="text/javascript">
+var map ;
+    //生成和初始化地圖函數：
+    function initMap(){
+        createMap();//生成地圖
+        setMapEvent();//設置地圖事件
+        addMapControl();//向地圖添加控制項
+    }
+    
+    //生成地圖函數：
+    function createMap(){
+        map = new BMap.Map("dituContent");//在百度地圖容器中生成一個地圖
+        var point = new BMap.Point(121.565418,25.032969);//定義一個中心點坐標
+        map.centerAndZoom(point,12);//設定地圖的中心點和坐標並將地圖顯示在地圖容器中
+        translateCallback(point);
+       // window.map = map;//將map變數存儲在全局
+    }
+    
+    //地圖事件設置函數：
+    function setMapEvent(){
+        map.enableDragging();//啟用地圖拖拽事件，預設啟用(可不寫)
+        map.enableScrollWheelZoom();//啟用地圖滾輪放大縮小
+        map.enableDoubleClickZoom();//啟用鼠標雙擊放大，預設啟用(可不寫)
+        map.enableKeyboard();//啟用鍵盤上下左右鍵移動地圖
+    }
+    
+    //地圖控制項添加函數：
+    function addMapControl(){
+        //向地圖中添加縮放控制項
+	var ctrl_nav = new BMap.NavigationControl({anchor:BMAP_ANCHOR_TOP_LEFT,type:BMAP_NAVIGATION_CONTROL_ZOOM});
+	map.addControl(ctrl_nav);
+        //向地圖中添加縮略圖控制項
+	var ctrl_ove = new BMap.OverviewMapControl({anchor:BMAP_ANCHOR_BOTTOM_RIGHT,isOpen:0});
+	map.addControl(ctrl_ove);
+        //向地圖中添加比例尺控制項
+	var ctrl_sca = new BMap.ScaleControl({anchor:BMAP_ANCHOR_BOTTOM_LEFT});
+	map.addControl(ctrl_sca);
+    }
+	var translateCallback = function (point){
+		map.clearOverlays();
+		var marker = new BMap.Marker(point);
+		map.addOverlay(marker);
+		map.setCenter(point);
+	}
+    function getPositionSuccess(position){
+		//alert(position.coords.latitude);
+		//return;
+		//console.log(position.coords);
+		var point = new BMap.Point(position.coords.longitude, position.coords.latitude);
+		map.centerAndZoom(point,15);
+		translateCallback(point);
+		return;
+		
+	}
+    function getPositionError(error){
+		switch (error.code) {
+			case error.TIMEOUT:
+				alert(" 連接超時，請重試 ");
+				break;
+			case error.PERMISSION_DENIED:
+				alert(" 您拒絕了使用定位分享服務，查詢已取消 ");
+				break;
+			case error.POSITION_UNAVAILABLE:
+				alert(" 親愛的火星網友，非常抱歉，我們暫時無法為您所在的星球提供位置服務 ");
+				break;
+		}
+	}
+	function getGeo(){
+		if (navigator.geolocation) {
+			navigator.geolocation.getCurrentPosition(getPositionSuccess, getPositionError);
+		}
+		else {
+			alert("你的瀏覽器不支援geolocation哦~");
+		}
+	}
+    //initMap();//生成和初始化地圖
+</script>-->
+
+	<section id="node" class="step slide rebuild">
+		<h2>Node.js</h2>
+		<p><a href="https://sites.google.com/site/nodejswikiinchinese/nodejs_from_scratch/introduction">nodeJS 介紹</a></p>
+		<ul data-build>
+			<li>伺服器端js</li>
+			<li>單執行緒</li>
+			<li>非阻塞IO</li>
+			<li>Google V8</li>
+			<li>事件驅動</li>
+		</ul>
+		<center><img src="./src/img/udc8.png" alt="" /></center>
+
+	</section>
+	
+	<section id="other" class="step slide rebuild">
+		<h1>其他</h1>
+		<p style="margin-top:20px">jQuery/YUI/prototype/MooTools...一個JavaScript框架或函式庫實際上是一系列工具和函數，它能更容易產生跨瀏覽器兼容的JavaScript原始碼。</p>
+		<ul data-build>
+			<li>選擇器</li>
+			<li>事件處理</li>
+			<li>DOM操作</li>
+			<li>實用函數</li>
+			<li>AJAX（非同步的JavaScript與XML技術）</li>
+		</ul>
+		<p style="margin-top:20px">JavaScript學習資料</p>
+		<ul data-build>
+			<li><a href="http://jstherightway.org/">http://jstherightway.org/</a></li>
+		</ul>
+	</section>
+	
+	<section id="question" class="step slide rebuild">
+        <h1>Question?<br/><b>Q&A</b></h1>
+"如果我每天要重複按照順序按100個不同的按鈕，為什麼不寫個程式自動按這100個按鈕？"<br/><br/>
+典型的反應是「正事都做不完了，哪裡有時間先做一個工具？」<br/><br/>
+不管多做一個工具，或少做一個工具，<br/>
+領的薪水還是一樣多，<br/>
+加快效率，也不能提早下班，<br/>
+倒是看起來比較閒了些，<br/>
+畢竟在不懂的人眼中看起來像偷懶，一間公司不是只有程式設計師.<br/><br/>
+
+程式勞工會問說：「如果我寫了個程式按了這100個按鈕，那我接下來的一百分鐘要靠什麼裝忙?」
+    </section>
+	<section id="end" class="step" >
+        <section class="title"><h1>The End<br/><b>Thank You</b></h1></section>
+    </section>
+</div>
+<div class="progress"><span></span></div>
+</div>
+<canvas id="myCanvas" width="1024" height="768">您的瀏覽器不支援HTML5,請升級或更換您的瀏覽器,強烈推薦您使用chrome瀏覽器。</canvas>
+<menu class="controls" id="slideCtrl">
+	<span class="tool home" onclick="location.hash='#cover'">!</span>
+	<span class="tool left">←</span>
+	<span class="tool right">→</span>
+	<span class="tool paint">p</span>
+	<span class="tool clearIt">d</span>
+</menu>
+<!--<script type="text/javascript" src="http://api.map.baidu.com/api?key=&v=1.3&services=true"></script>-->
+<script type="text/javascript" src="./src/js/webslideo.js"></script>
+<script type="text/javascript">
+			$(function() {
+				jQuery.syntax({theme: 'grey', blockLayout: 'fixed'});
+			});
+		</script>
+<script type="text/javascript">
+function success(position) {
+  var s = document.querySelector('#status');
+  
+  if (s.className == 'success') {
+    // not sure why we're hitting this twice in FF, I think it's to do with a cached result coming back    
+    return;
+  }
+  
+  s.innerHTML = "找到了";
+  s.className = 'success';
+  /*
+  var mapcanvas = document.createElement('div');
+  mapcanvas.id = 'mapcanvas';
+  mapcanvas.style.height = '400px';
+  mapcanvas.style.width = '500px';
+    
+  document.querySelector('#dituContent').appendChild(mapcanvas);
+  //*/
+  var latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+  var myOptions = {
+    zoom: 15,
+    center: latlng,
+    mapTypeControl: false,
+    navigationControlOptions: {style: google.maps.NavigationControlStyle.SMALL},
+    mapTypeId: google.maps.MapTypeId.ROADMAP
+  };
+  var map = new google.maps.Map(document.getElementById("dituContent"), myOptions);
+  
+  var marker = new google.maps.Marker({
+      position: latlng, 
+      map: map, 
+      title:"我們在這(至少在"+position.coords.accuracy+"公尺半徑範圍內)"
+  });
+}
+
+function error(msg) {
+  var s = document.querySelector('#status');
+  s.innerHTML = typeof msg == 'string' ? msg : "failed";
+  s.className = 'fail';
+  
+  // console.log(arguments);
+}
+
+if (navigator.geolocation) {
+  navigator.geolocation.getCurrentPosition(success, error);
+} else {
+  error('not supported');
+}
+
+</script>
+</body>
+</html>

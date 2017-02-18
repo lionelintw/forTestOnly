@@ -1,0 +1,981 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>javascript</title>
+	<link rel="stylesheet" href="./src/css/index.css" />
+	<link rel="stylesheet" href="./src/css/webslide.css" />
+	<link rel="stylesheet" href="./src/css/codecolorer.css" />
+<!--[if lt IE 9]>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<![endif]-->
+<!--[if gte IE 9]><!-->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+<![endif]-->
+<script src="./src/public/jquery.syntax.js" type="text/javascript"></script>
+<script src="./src/public/jquery.syntax.cache.js" type="text/javascript"></script>	
+</head>
+<body>
+
+<div id="slide" >
+<div class="slides">
+	<section id="cover" class="step" >
+		<section class="title">
+			<h1>JS入門及學習指南</h1>
+			<h2></h2>
+			<h3></h3>
+			<!--<h3>webSlide：<a href="https://github.com/ksky521/webSlide/" target="_blank">Git</a></h3>-->
+		</section>
+	</section>
+	<section id="slide2" class="step slide">
+		<h1 class="header">我們來討論些什麼？</h1>
+		<ul>
+			<li>javascript是？</li>
+			<li>script標籤</li>
+			<li>javascript基本語法</li>
+			<li>變數類型</li>
+			<li>常見物件及方法</li>
+			<li>DOM基本知識介紹</li>
+			<li>JSON & JSONP</li>
+			<li>其他（編輯器，Debug工具，趨勢，學習資料..）</li>
+		</ul>
+	</section>
+	
+	<section id="slide3" class="step slide rebuild">
+		<h1 class="header">什麼是javascript</h1>
+		<ul data-build>
+			<li>是一種網路語法語言</li>
+			<li>ECMAScript標準</li>
+			<li>JavaScript和JScript</li>
+			<li>因表單驗證而生，但不僅僅是驗證表單！</li>
+			<li>被誤解的javascript</li>
+		</ul>
+	</section>
+	<section id="slide4" class="step slide rebuild">
+		<h1>script標籤</h1>
+		<div data-build><h2>type</h2>
+		<ul>
+			<li>text/javascript</li>
+		</ul>
+		<h2>charset</h2>
+		<ul>
+			<li>編碼這個 javascript 程序的字元集，如UTF-8</li>
+		</ul>
+		<h2>src</h2>
+		<ul>
+			<li>js文件路徑</li>
+		</ul>
+		<h2>script 放置的位置</h2>
+		<ul>
+			<li>head/body之內</li>
+		</ul>
+		<h2>noscript 標籤</h2>
+		<ul>
+			<li>元素用來定義在語法未被執行時的替代內容（文字）</li>
+		</ul>
+		</div>
+	</section>
+	<section id="grammar" class="step slide rebuild">
+		<h1>基本語法 &nbsp; 1</h1>
+		<h2>註釋</h2>
+		<ul>
+			<li>//、/**/</li>
+		</ul>
+		<div data-build><h2>定義變數</h2>
+		<ul>
+			<li>var &lt;變數&gt; = &lt;表達式&gt;;</li>
+			<li>變數名以字母和下劃線開頭</li>
+		</ul>
+		
+		<h2>弱類型變數</h2>
+		<ul>
+			<li>變數聲明時不需顯式地指定其數據類型</li>
+		</ul>
+		<h2>運算符</h2>
+		<ul>
+			<li>+ &nbsp;&nbsp; - &nbsp;&nbsp; * &nbsp;&nbsp; / &nbsp;&nbsp; = &nbsp;&nbsp; % &nbsp;&nbsp; == &nbsp;&nbsp; != &nbsp;&nbsp; === &nbsp;&nbsp; !== ……</li>
+		</ul>
+		</div>
+	</section>
+	<section id="grammar2" class="step slide rebuild" >
+		<h1>變數類型</h1>
+		<h2>基礎類型</h2>
+		<ul>
+			<li>undefined/string/number/boolean/object/function</li>
+		</ul>
+		<div data-build>
+		<h2>物件類型</h2>
+		<ul>
+			<li>以基礎類型為基礎，從object這一種類型中發展起來的</li>
+		</ul>
+		
+		<pre class="syntax javascript">
+//分類標準是按照檢驗方法來分
+typeof [];//"object"
+typeof function(){};//"function"
+typeof 1;//"number"
+typeof '1';//"string"
+typeof true;//"boolean"
+typeof abc;//"undefined"
+typeof null;//"object"
+
+//判斷物件實例使用instanceof 
+var abc = function(){};
+ abc instanceof Function;//true
+var arr = [];
+ arr instanceof Array;//true
+ arr instanceof Object;//true</pre>
+		
+		<!--<div class="codecolorer-container javascript railscasts" style="overflow:auto;white-space:nowrap;width:700px;"><table cellspacing="0" cellpadding="0"><tbody><tr><td class="line-numbers"><div>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br></div></td><td><div class="javascript codecolorer"><span class="co1">//分類標準是按照檢驗方法來分</span><br>
+<span class="kw1">typeof</span> <span class="br0">[</span><span class="br0">]</span><span class="sy0">;</span><span class="co1">//"object"</span><br>
+<span class="kw1">typeof</span> <span class="kw2">function</span><span class="br0">(</span><span class="br0">)</span><span class="br0">{</span><span class="br0">}</span><span class="sy0">;</span><span class="co1">//"function"</span><br>
+<span class="kw1">typeof</span> <span class="nu0">1</span><span class="sy0">;</span><span class="co1">//"number"</span><br>
+<span class="kw1">typeof</span> <span class="st0">'1'</span><span class="sy0">;</span><span class="co1">//"string"</span><br>
+<span class="kw1">typeof</span> <span class="kw2">true</span><span class="sy0">;</span><span class="co1">//"boolean"</span><br>
+<span class="kw1">typeof</span> abc<span class="sy0">;</span><span class="co1">//"undefined"</span><br>
+<span class="kw1">typeof</span> <span class="kw2">null</span><span class="sy0">;</span><span class="co1">//"object"</span><br>
+<br>
+<span class="co1">//判斷物件實例使用instanceof </span><br>
+<span class="kw2">var</span> abc <span class="sy0">=</span> <span class="kw2">function</span><span class="br0">(</span><span class="br0">)</span><span class="br0">{</span><span class="br0">}</span><span class="sy0">;</span><br>
+abc <span class="kw1">instanceof</span> <span class="kw2">Function</span><span class="sy0">;</span><span class="co1">//true</span><br>
+<span class="kw2">var</span> arr <span class="sy0">=</span> <span class="br0">[</span><span class="br0">]</span><span class="sy0">;</span><br>
+arr <span class="kw1">instanceof</span> Array<span class="sy0">;</span><span class="co1">//true</span><br>
+arr <span class="kw1">instanceof</span> Object<span class="sy0">;</span><span class="co1">//true</span></div></td></tr></tbody></table></div>
+		</div>-->
+	</section>
+	
+	<section id="grammar3" class="step slide rebuild">
+		<h2>數值</h2>
+		<p>在JavaScript中所有數值都被描繪成浮點值，當定義數值變數時記得<span style="color:red">不要用引號</span>。</p>
+<div data-build>		
+<pre class="syntax javascript">
+var a = 3;
+var b = 4;
+var ab = a * b;//12</pre>
+		
+		<!--<div class="codecolorer-container javascript railscasts" style="overflow:auto;white-space:nowrap;width:700px;"><table cellspacing="0" cellpadding="0"><tbody><tr><td class="line-numbers"><div>1<br>2<br>3<br></div></td><td><div class="javascript codecolorer"><span class="kw2">var</span> a <span class="sy0">=</span> <span class="nu0">3</span><span class="sy0">;</span><br>
+		<span class="kw2">var</span> b <span class="sy0">=</span> <span class="nu0">4</span><span class="sy0">;</span><br>
+		<span class="kw2">var</span> ab <span class="sy0">=</span> a <span class="sy0">*</span> b<span class="sy0">;</span><span class="co1">//12</span></div></td></tr></tbody></table></div>-->
+		<h2>字元串</h2>
+		<p>一個字元串可由一連串的Unicode字元組成，並由一對雙引號或單引號包圍。</p>
+		
+		<pre class="syntax javascript">
+var a = 'hello';
+var b = 'weibo';
+var ab = a + " " + b;//
+// +號進行字元串連接處理
+// (它還可用於數學上的加法運算)</pre>		
+				
+		<!--<div class="codecolorer-container javascript railscasts" style="overflow:auto;white-space:nowrap;width:700px;"><table cellspacing="0" cellpadding="0"><tbody><tr><td class="line-numbers"><div>1<br>2<br>3<br>4<br>5<br></div></td><td><div class="javascript codecolorer"><span class="kw2">var</span> a <span class="sy0">=</span> <span class="st0">'hello'</span><span class="sy0">;</span><br>
+	<span class="kw2">var</span> b <span class="sy0">=</span> <span class="st0">'weibo'</span><span class="sy0">;</span><br>
+	<span class="kw2">var</span> ab <span class="sy0">=</span> a <span class="sy0">+</span> <span class="st0">" "</span> <span class="sy0">+</span> b<span class="sy0">;</span><span class="co1">//</span><br>
+	<span class="co1">// +號進行字元串連接處理</span><br>
+	<span class="co1">// (它還可用於數學上的加法運算)</span></div></td></tr></tbody></table></div>
+		-->
+		</div></section>
+	<section id="grammar4" class="step slide rebuild">
+		<h2>布爾值</h2>
+		<p>布爾類型在你進行條件判斷的時候很有用，以瞭解是否符合指定的標準。布爾有兩個可能的值:true和false。任何使用邏輯算法的比較結果都將是布爾值。</p>
+<div data-build>		
+				<pre class="syntax javascript">
+5 === (3 + 2); // = true 
+5 == (3 + '2'); // = false
+// 你可以給變數聲明布爾值:
+var a = true;
+// 你可以像這樣測試:
+if (a) {
+     // 你的原始碼
+}</pre>
+		
+		<!--<div class="codecolorer-container javascript railscasts" style="overflow:auto;white-space:nowrap;width:700px;"><table cellspacing="0" cellpadding="0"><tbody><tr><td class="line-numbers"><div>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br></div></td><td><div class="javascript codecolorer"><span class="nu0">5</span> <span class="sy0">===</span> <span class="br0">(</span><span class="nu0">3</span> <span class="sy0">+</span> <span class="nu0">2</span><span class="br0">)</span><span class="sy0">;</span> <span class="co1">// = true </span><br>
+		<span class="nu0">5</span> <span class="sy0">==</span> <span class="br0">(</span><span class="nu0">3</span> <span class="sy0">+</span> <span class="st0">'2'</span><span class="br0">)</span><span class="sy0">;</span> <span class="co1">// = false</span><br>
+		<span class="co1">// 你可以給變數聲明布爾值:</span><br>
+		<span class="kw2">var</span> a <span class="sy0">=</span> <span class="kw2">true</span><span class="sy0">;</span><br>
+		<span class="co1">// 你可以像這樣測試:</span><br>
+		<span class="kw1">if</span> <span class="br0">(</span>a<span class="br0">)</span> <span class="br0">{</span><br>
+		&nbsp; &nbsp; <span class="co1">// 你的原始碼</span><br>
+		<span class="br0">}</span></div></td></tr></tbody></table></div>
+		-->
+	</div></section>
+	<section id="grammar5" class="step slide rebuild">
+		<h2>數組</h2>
+		<p>數組也是一個專門的物件，它可以包含任意數量的數據。要訪問數組中的數據你就必須使用數字，用以引用其在數組中的」索引」（從0開始哦~）。</p>
+		<div data-build>
+		<pre class="syntax javascript">
+// 兩種聲名數組的不同方式,
+     
+// 字面:
+var fruits = ['apple', 'lemon', 'banana'];
+     
+// 使用數組構造器:
+var fruits = new Array('apple', 'lemon', 'banana');
+     
+ fruit[0]; // 訪問數組中的第一個數據項 (apple)
+ fruit[1]; // 訪問數組中的第二個數據項  (lemon)
+
+// 多維數組
+var school = [['小明', '小浪'], ['大黃', '小新']];
+
+ school[0][0]// 小明在一班</pre>
+		<!--<div class="codecolorer-container javascript railscasts" style="overflow:auto;white-space:nowrap;width:700px;"><table cellspacing="0" cellpadding="0"><tbody><tr><td class="line-numbers"><div>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br></div></td><td><div class="javascript codecolorer"><span class="co1">// 兩種聲名數組的不同方式,</span><br>
+&nbsp; &nbsp; <br>
+<span class="co1">// 字面:</span><br>
+<span class="kw2">var</span> fruits <span class="sy0">=</span> <span class="br0">[</span><span class="st0">'apple'</span><span class="sy0">,</span> <span class="st0">'lemon'</span><span class="sy0">,</span> <span class="st0">'banana'</span><span class="br0">]</span><span class="sy0">;</span><br>
+&nbsp; &nbsp; <br>
+<span class="co1">// 使用數組構造器:</span><br>
+<span class="kw2">var</span> fruits <span class="sy0">=</span> <span class="kw2">new</span> Array<span class="br0">(</span><span class="st0">'apple'</span><span class="sy0">,</span> <span class="st0">'lemon'</span><span class="sy0">,</span> <span class="st0">'banana'</span><span class="br0">)</span><span class="sy0">;</span><br>
+&nbsp; &nbsp; <br>
+fruit<span class="br0">[</span><span class="nu0">0</span><span class="br0">]</span><span class="sy0">;</span> <span class="co1">// 訪問數組中的第一個數據項 (apple)</span><br>
+fruit<span class="br0">[</span><span class="nu0">1</span><span class="br0">]</span><span class="sy0">;</span> <span class="co1">// 訪問數組中的第二個數據項 &nbsp;(lemon)</span><br>
+<br>
+<span class="co1">// 多維數組</span><br>
+<span class="kw2">var</span> school <span class="sy0">=</span> <span class="br0">[</span><span class="br0">[</span><span class="st0">'小明'</span><span class="sy0">,</span> <span class="st0">'小浪'</span><span class="br0">]</span><span class="sy0">,</span> <span class="br0">[</span><span class="st0">'大黃'</span><span class="sy0">,</span> <span class="st0">'小新'</span><span class="br0">]</span><span class="br0">]</span><span class="sy0">;</span><br>
+<br>
+school<span class="br0">[</span><span class="nu0">0</span><span class="br0">]</span><span class="br0">[</span><span class="nu0">0</span><span class="br0">]</span><span class="co1">// 小明在一班</span></div></td></tr></tbody></table></div>-->
+	</div></section>
+	
+	<section id="grammar6" class="step slide rebuild">
+		<h2>物件</h2>
+		<p>物件是命名的的值的集合(鍵-值對)，它和數組很相似，唯一的不同之處在於你可以為每個數據值指定名字。</p>
+		<div data-build>
+		
+		<pre class="syntax javascript">
+// 兩種聲明物件的不同方式,
+     
+// 字面(大括號):
+var I = {
+     name: 'Wang',
+     job: 'RIA Developer',
+     site:'js8.in'
+};
+     
+// 適用物件構造器:
+var school = new Object();
+ school.class1 = ['小明', '小浪'];
+ school.class2 = ['大黃', '小新'];
+
+// 兩種訪問方法
+//.運算符
+ school.class1[0];//小明
+//中括號
+ school['class2'][0];//大黃</pre>
+		<!--<div class="codecolorer-container javascript railscasts" style="overflow:auto;white-space:nowrap;width:700px;"><table cellspacing="0" cellpadding="0"><tbody><tr><td class="line-numbers"><div>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br></div></td><td><div class="javascript codecolorer"><span class="co1">// 兩種聲明物件的不同方式,</span><br>
+&nbsp; &nbsp; <br>
+<span class="co1">// 字面(大括號):</span><br>
+<span class="kw2">var</span> I <span class="sy0">=</span> <span class="br0">{</span><br>
+&nbsp; &nbsp; <span class="kw3">name</span><span class="sy0">:</span> <span class="st0">'Wang'</span><span class="sy0">,</span><br>
+&nbsp; &nbsp; job<span class="sy0">:</span> <span class="st0">'RIA Developer'</span><span class="sy0">,</span><br>
+&nbsp; &nbsp; site<span class="sy0">:</span><span class="st0">'js8.in'</span><br>
+<span class="br0">}</span><span class="sy0">;</span><br>
+&nbsp; &nbsp; <br>
+<span class="co1">// 適用物件構造器:</span><br>
+<span class="kw2">var</span> school <span class="sy0">=</span> <span class="kw2">new</span> Object<span class="br0">(</span><span class="br0">)</span><span class="sy0">;</span><br>
+school.<span class="me1">class1</span> <span class="sy0">=</span> <span class="br0">[</span><span class="st0">'小明'</span><span class="sy0">,</span> <span class="st0">'小浪'</span><span class="br0">]</span><span class="sy0">;</span><br>
+school.<span class="me1">class2</span> <span class="sy0">=</span> <span class="br0">[</span><span class="st0">'大黃'</span><span class="sy0">,</span> <span class="st0">'小新'</span><span class="br0">]</span><span class="sy0">;</span><br>
+<br>
+<span class="co1">// 兩種訪問方法</span><br>
+<span class="co1">//.運算符</span><br>
+school.<span class="me1">class1</span><span class="br0">[</span><span class="nu0">0</span><span class="br0">]</span><span class="sy0">;</span><span class="co1">//小明</span><br>
+<span class="co1">//中括號</span><br>
+school<span class="br0">[</span><span class="st0">'class2'</span><span class="br0">]</span><span class="br0">[</span><span class="nu0">0</span><span class="br0">]</span><span class="sy0">;</span><span class="co1">//大黃</span></div></td></tr></tbody></table></div>-->
+	</div></section>	
+	<section id="grammar8" class="step slide rebuild">
+		<h2>函數</h2>
+		<ul>
+			<li>聲明方法</li>
+		</ul>
+		<div data-build>
+		
+		<pre class="syntax javascript">
+// 使用函數操作創建一個新函數:
+function myFunctionName(arg1, arg2) {
+     // 這裡是函數的原始碼
+}
+     
+// 如果你省略掉函數名，那麼你創建的是"匿名函數":
+function(arg1, arg2) {
+     // 這裡是函數的原始碼
+}
+         
+// 執行函數僅需對他進行引用並使用圓括號 (附帶參數):
+ myFunctionName(); // 無參數
+ myFunctionName('foo', 'bar'); // 帶參數
+     
+// 你也可以在不聲明變數的情況下執行函數
+     
+(function(){
+     // 這就是所謂的自調用匿名函數
+})();</pre>
+		
+		<!--<div class="codecolorer-container javascript railscasts" style="overflow:auto;white-space:nowrap;width:700px;"><div class="javascript codecolorer"><span class="co1">// 使用函數操作創建一個新函數:</span><br>
+<span class="kw2">function</span> myFunctionName<span class="br0">(</span>arg1<span class="sy0">,</span> arg2<span class="br0">)</span> <span class="br0">{</span><br>
+&nbsp; &nbsp; <span class="co1">// 這裡是函數的原始碼</span><br>
+<span class="br0">}</span><br>
+&nbsp; &nbsp; <br>
+<span class="co1">// 如果你省略掉函數名，那麼你創建的是"匿名函數":</span><br>
+<span class="kw2">function</span><span class="br0">(</span>arg1<span class="sy0">,</span> arg2<span class="br0">)</span> <span class="br0">{</span><br>
+&nbsp; &nbsp; <span class="co1">// 這裡是函數的原始碼</span><br>
+<span class="br0">}</span><br>
+&nbsp; &nbsp; &nbsp; &nbsp; <br>
+<span class="co1">// 執行函數僅需對他進行引用並使用圓括號 (附帶參數):</span><br>
+myFunctionName<span class="br0">(</span><span class="br0">)</span><span class="sy0">;</span> <span class="co1">// 無參數</span><br>
+myFunctionName<span class="br0">(</span><span class="st0">'foo'</span><span class="sy0">,</span> <span class="st0">'bar'</span><span class="br0">)</span><span class="sy0">;</span> <span class="co1">// 帶參數</span><br>
+&nbsp; &nbsp; <br>
+<span class="co1">// 你也可以在不聲明變數的情況下執行函數</span><br>
+&nbsp; &nbsp; <br>
+<span class="br0">(</span><span class="kw2">function</span><span class="br0">(</span><span class="br0">)</span><span class="br0">{</span><br>
+&nbsp; &nbsp; <span class="co1">// 這就是所謂的自調用匿名函數</span><br>
+<span class="br0">}</span><span class="br0">)</span><span class="br0">(</span><span class="br0">)</span><span class="sy0">;</span></div></div>-->
+	</div>
+	</section>
+	<section id="grammar9" class="step slide">
+		<h1>基本語法 &nbsp; 2</h1>
+		<h2>語句</h2>
+		<ul>
+			<li>循環</li>
+			<li style="list-style:none;" >
+				<ul>
+					<li style="list-style:square inside">for/for-in</li>
+					<li style="list-style:square inside">while/do-while</li>
+				</ul>
+			</li>
+			<li>判斷</li>
+			<li style="list-style:none;" >
+				<ul>
+					<li style="list-style:square inside">if/if-else</li>
+					<li style="list-style:square inside">switch</li>
+				</ul>
+			</li>
+		</ul>
+		
+	</section>
+	<section id="grammar10" class="step slide rebuild">
+		<h2>循環語句：for/for-in</h2>
+		<ul>
+			<li>for：普通循環</li>
+			<li>for-in：物件屬性遍歷</li>
+		</ul>
+		<div data-build>
+		
+		<pre class="syntax javascript">
+//for 循環
+for(var i = 0; i < 10; i++ ){
+     alert(i);
+}
+
+//for-in循環用於物件遍歷
+var I = {
+     name: 'Wang',
+     job: 'RIA Developer',
+     site:'js8.in'
+};
+for(var i in I){
+     alert(I[i]);
+}</pre>
+		
+		<!--<div style="overflow:auto;white-space:nowrap;width:700px;" class="codecolorer-container javascript railscasts"><table cellspacing="0" cellpadding="0"><tbody><tr><td class="line-numbers"><div>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br></div></td><td><div style="white-space:nowrap" class="javascript codecolorer"><span class="co1">//for 循環</span><br>
+<span class="kw1">for</span><span class="br0">(</span><span class="kw2">var</span> i <span class="sy0">=</span> <span class="nu0">0</span><span class="sy0">;</span> i <span class="sy0">&lt;</span> <span class="nu0">10</span><span class="sy0">;</span> i<span class="sy0">++</span> <span class="br0">)</span><span class="br0">{</span><br>
+&nbsp; &nbsp; <span class="kw3">alert</span><span class="br0">(</span>i<span class="br0">)</span><span class="sy0">;</span><br>
+<span class="br0">}</span><br>
+<br>
+<span class="co1">//for-in循環用於物件遍歷</span><br>
+<span class="kw2">var</span> I <span class="sy0">=</span> <span class="br0">{</span><br>
+&nbsp; &nbsp; <span class="kw3">name</span><span class="sy0">:</span> <span class="st0">'Wang'</span><span class="sy0">,</span><br>
+&nbsp; &nbsp; job<span class="sy0">:</span> <span class="st0">'RIA Developer'</span><span class="sy0">,</span><br>
+&nbsp; &nbsp; site<span class="sy0">:</span><span class="st0">'js8.in'</span><br>
+<span class="br0">}</span><span class="sy0">;</span><br>
+<span class="kw1">for</span><span class="br0">(</span><span class="kw2">var</span> i <span class="kw1">in</span> I<span class="br0">)</span><span class="br0">{</span><br>
+&nbsp; &nbsp; <span class="kw3">alert</span><span class="br0">(</span>I<span class="br0">[</span>i<span class="br0">]</span><span class="br0">)</span><span class="sy0">;</span><br>
+<span class="br0">}</span></div></td></tr></tbody></table></div>-->
+	</div></section>
+	
+	<section id="grammar11" class="step slide rebuild">
+		<h2>循環語句：while/do-while</h2>
+		<ul>
+			<li>while：先判斷</li>
+			<li>do-while：先做一次再判斷</li>
+		</ul>
+		<div data-build>
+		
+		<pre class="syntax javascript">
+//while循環
+var a = [0, 1, 2, 3, 4, 5, 6, 7];
+var len = a.length;
+while(len--){
+     alert(a[len]);
+}
+//do-while循環，先do，後判斷再循環
+ len = a.length;
+do{
+     len--;
+     alert(len);  
+}while(len);</pre>
+		
+		<!--<div style="overflow:auto;white-space:nowrap;width:700px;" class="codecolorer-container javascript railscasts"><table cellspacing="0" cellpadding="0"><tbody><tr><td class="line-numbers"><div>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br></div></td><td><div style="white-space:nowrap" class="javascript codecolorer"><span class="co1">//while循環</span><br>
+<span class="kw2">var</span> a <span class="sy0">=</span> <span class="br0">[</span><span class="nu0">0</span><span class="sy0">,</span> <span class="nu0">1</span><span class="sy0">,</span> <span class="nu0">2</span><span class="sy0">,</span> <span class="nu0">3</span><span class="sy0">,</span> <span class="nu0">4</span><span class="sy0">,</span> <span class="nu0">5</span><span class="sy0">,</span> <span class="nu0">6</span><span class="sy0">,</span> <span class="nu0">7</span><span class="br0">]</span><span class="sy0">;</span><br>
+<span class="kw2">var</span> len <span class="sy0">=</span> a.<span class="me1">length</span><span class="sy0">;</span><br>
+<span class="kw1">while</span><span class="br0">(</span>len<span class="sy0">--</span><span class="br0">)</span><span class="br0">{</span><br>
+&nbsp; &nbsp; <span class="kw3">alert</span><span class="br0">(</span>a<span class="br0">[</span>len<span class="br0">]</span><span class="br0">)</span><span class="sy0">;</span><br>
+<span class="br0">}</span><br>
+<span class="co1">//do-while循環，先do，後判斷再循環</span><br>
+len <span class="sy0">=</span> a.<span class="me1">length</span><span class="sy0">;</span><br>
+<span class="kw1">do</span><span class="br0">{</span><br>
+&nbsp; &nbsp; len<span class="sy0">--;</span><br>
+&nbsp; &nbsp; <span class="kw3">alert</span><span class="br0">(</span>len<span class="br0">)</span><span class="sy0">;</span> &nbsp;<br>
+<span class="br0">}</span><span class="kw1">while</span><span class="br0">(</span>len<span class="br0">)</span><span class="sy0">;</span></div></td></tr></tbody></table></div>-->
+	</div></section>
+	
+	<section id="grammar12" class="step slide rebuild">
+		<h2>判斷語句：if-else/switch</h2>
+		<div data-build>
+		
+		<pre class="syntax javascript">
+var a = 12;
+//if-else 判斷
+if(a == 12){//將可能性大的條件往前寫，減少判斷
+     alert('a = 12');
+}else if(a == 34){
+     alert('a = 34');
+}else{
+     alert('end');
+}
+
+//switch判斷
+switch(a){
+     case 12:
+         alert('a = 12');
+         break;//不break，繼續執行
+     case 34:
+         alert('a = 34');
+         break;
+     default://默認
+         alert('end');
+}</pre>
+		
+		<!--<div style="overflow:auto;white-space:nowrap;width:700px;" class="codecolorer-container javascript railscasts"><table cellspacing="0" cellpadding="0"><tbody><tr><td class="line-numbers"><div>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br></div></td><td><div style="white-space:nowrap" class="javascript codecolorer"><span class="kw2">var</span> a <span class="sy0">=</span> <span class="nu0">12</span><span class="sy0">;</span><br>
+<span class="co1">//if-else 判斷</span><br>
+<span class="kw1">if</span><span class="br0">(</span>a <span class="sy0">==</span> <span class="nu0">12</span><span class="br0">)</span><span class="br0">{</span><span class="co1">//將可能性大的條件往前寫，減少判斷</span><br>
+&nbsp; &nbsp; <span class="kw3">alert</span><span class="br0">(</span><span class="st0">'a = 12'</span><span class="br0">)</span><span class="sy0">;</span><br>
+<span class="br0">}</span><span class="kw1">else</span> <span class="kw1">if</span><span class="br0">(</span>a <span class="sy0">==</span> <span class="nu0">34</span><span class="br0">)</span><span class="br0">{</span><br>
+&nbsp; &nbsp; <span class="kw3">alert</span><span class="br0">(</span><span class="st0">'a = 34'</span><span class="br0">)</span><span class="sy0">;</span><br>
+<span class="br0">}</span><span class="kw1">else</span><span class="br0">{</span><br>
+&nbsp; &nbsp; <span class="kw3">alert</span><span class="br0">(</span><span class="st0">'end'</span><span class="br0">)</span><span class="sy0">;</span><br>
+<span class="br0">}</span><br>
+<br>
+<span class="co1">//switch判斷</span><br>
+<span class="kw1">switch</span><span class="br0">(</span>a<span class="br0">)</span><span class="br0">{</span><br>
+&nbsp; &nbsp; <span class="kw1">case</span> <span class="nu0">12</span><span class="sy0">:</span><br>
+&nbsp; &nbsp; &nbsp; &nbsp; <span class="kw3">alert</span><span class="br0">(</span><span class="st0">'a = 12'</span><span class="br0">)</span><span class="sy0">;</span><br>
+&nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">break</span><span class="sy0">;</span><span class="co1">//不break，繼續執行</span><br>
+&nbsp; &nbsp; <span class="kw1">case</span> <span class="nu0">34</span><span class="sy0">:</span><br>
+&nbsp; &nbsp; &nbsp; &nbsp; <span class="kw3">alert</span><span class="br0">(</span><span class="st0">'a = 34'</span><span class="br0">)</span><span class="sy0">;</span><br>
+&nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">break</span><span class="sy0">;</span><br>
+&nbsp; &nbsp; <span class="kw2">default</span><span class="sy0">:</span><span class="co1">//默認</span><br>
+&nbsp; &nbsp; &nbsp; &nbsp; <span class="kw3">alert</span><span class="br0">(</span><span class="st0">'end'</span><span class="br0">)</span><span class="sy0">;</span><br>
+<span class="br0">}</span></div></td></tr></tbody></table></div>-->
+		
+	</div></section>
+	
+	<section id="obj1" class="step slide rebuild" >
+		<h1>常見物件及方法 &nbsp; 1</h1>
+		<ul data-build>
+			<li>String：<span style="color:#F60">"string"</span></li>
+			<li style="list-style:none;" >
+				<ul>
+					<li style="list-style:square inside">"123".length<button onclick="alert('123'.length);">getLength</button></li>
+					<li style="list-style:square inside">indexOf()/replace()/substring()/slice()。。。</li>
+				</ul>
+			</li>
+			<li>Array：<span style="color:#F60">[1,2,3] []</span></li>
+			<li style="list-style:none;">
+				<ul>
+					<li style="list-style:square inside">[1,2,3].length<button onclick="alert([1,2,3].length);">getLength</button></li>
+					<li style="list-style:square inside">push()/pop()/shift()/unshift()。。。</li>
+				</ul>
+			</li>
+			<li>Date：<span style="color:#F60">new Date(12345678901)</span><button onclick="alert(new Date());">getDate</button></li>
+			<li style="list-style:none;">
+				<ul>
+					<li style="list-style:square inside">getTime()/getFullYear()/getHours()。。。</li>
+				</ul>
+			</li>
+			<li>Math：<span style="color:#F60">Math.PI、Math.max(2,3)</span><button onclick="alert(Math.max(2,3));">RUN</button></li>
+			<li>RegExp：<span style="color:#F60"></span></li>
+			<li style="list-style:none;">
+				<ul>
+					<li style="list-style:square inside">/e/ig.test('h<span style="color:red">E</span>llo world')<button onclick="alert(/e/g.test('hello world'));">RUN</button></li>
+					<li style="list-style:square inside">exec()。。。</li>
+				</ul>
+			</li>
+		</ul>
+		
+	</section>
+	<section id="obj2" class="step slide rebuild">
+		<h1>常見物件及方法 &nbsp; 2</h1>
+		<ul data-build>
+			<li>window：<span style="color:#F60">alert('hello world')</span></li>
+			<li>document：<span style="color:#F60">.write...</span><button onclick='alert(document);'>Run</button></li>
+			<li>navigator：<span style="color:#F60">alert(navigator.userAgent);<button onclick='alert(navigator.userAgent);'>Run</button></span></li>
+			<li>location：<span style="color:#F60">location.href...<button onclick='alert(location.href);'>Run</button></span></li>
+		</ul>
+		<div data-build>
+		<center><img src="./src/img/udc0.png" style="position:absolute;left:0;top:340px;width:900px" /></center></div>
+	</section>
+	<section id="step10" class="step slide rebuild">
+		<h1>DOM</h1>
+		<ul>
+			<li>文檔物件模型(Document Object Model)，通常簡稱為DOM，是網站內容與JavaScript互通的節點。自JavaScript成為最常用的語言時JavaScript和DOM通常被視為獨立的實體。DOM節點用於存取、遍歷和控制HTML和XML文檔</li>
+		</ul>
+		
+		
+		<pre class="syntax html">
+&lt;html&gt;
+     &lt;head&gt;
+         &lt;title&gt;Sample Page&lt;/title&gt;
+     &lt;/head&gt;
+     &lt;body&gt;
+         &lt;p&gt;hello world!&lt;/p&gt;
+     &lt;/body&gt;
+&lt;/html&gt;</pre>
+		
+		<!--<div class="codecolorer-container html4strict railscasts" style="position:absolute;left:50px;top:340px;overflow:auto;white-space:nowrap;width:420px;"><table cellspacing="0" cellpadding="0"><tbody><tr><td class="line-numbers"><div>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br></div></td><td><div class="html4strict codecolorer"><span class="sc2">&lt;<span class="kw2">html</span>&gt;</span><br>
+&nbsp; &nbsp; <span class="sc2">&lt;<span class="kw2">head</span>&gt;</span><br>
+&nbsp; &nbsp; &nbsp; &nbsp; <span class="sc2">&lt;<span class="kw2">title</span>&gt;</span>Sample Page<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">title</span>&gt;</span><br>
+&nbsp; &nbsp; <span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">head</span>&gt;</span><br>
+&nbsp; &nbsp; <span class="sc2">&lt;<span class="kw2">body</span>&gt;</span><br>
+&nbsp; &nbsp; &nbsp; &nbsp; <span class="sc2">&lt;<span class="kw2">p</span>&gt;</span>hello world!<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">p</span>&gt;</span><br>
+&nbsp; &nbsp; <span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">body</span>&gt;</span><br>
+<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">html</span>&gt;</span></div></td></tr></tbody></table></div>-->
+		<div data-build><img src="./src/img/udc2.png" style="position:absolute;right:50px;top:300px;"/>
+		</div>
+	</section>
+<div id="idName" node-type="hello" style="display:none;">
+		<ul id="ul">
+			<li>i am 1</li>
+			<li>i am 2</li>
+			<li>i am 3</li>
+		</ul>
+	</div>
+	
+	<script type="text/javascript">
+		var $demoNode = document.getElementById('idName');
+	</script>	
+	<section id="dom1" class="step slide">
+		<h1>獲取DOM節點</h1>
+
+<pre class="syntax html">&lt;div id=&quot;idName&quot; node-type=&quot;hello&quot;&gt;
+     &lt;ul id=&quot;ul&quot;&gt;
+         &lt;li&gt;i am 1&lt;/li&gt;
+         &lt;li&gt;i am 2&lt;/li&gt;
+         &lt;li&gt;i am 3&lt;/li&gt;
+     &lt;/ul&gt;
+&lt;/div&gt;</pre>
+<br/><br/>
+
+		
+		<!--<div class="codecolorer-container html4strict railscasts" style="overflow:auto;white-space:nowrap;width:700px;"><table cellspacing="0" cellpadding="0"><tbody><tr><td class="line-numbers"><div>1<br>2<br>3<br>4<br>5<br>6<br>7<br></div></td><td><div class="html4strict codecolorer"><span class="sc2">&lt;<span class="kw2">div</span> <span class="kw3">id</span><span class="sy0">=</span><span class="st0">"idName"</span> node-<span class="kw3">type</span><span class="sy0">=</span><span class="st0">"hello"</span>&gt;</span><br>
+&nbsp; &nbsp; <span class="sc2">&lt;<span class="kw2">ul</span> <span class="kw3">id</span><span class="sy0">=</span><span class="st0">"ul"</span>&gt;</span><br>
+&nbsp; &nbsp; &nbsp; &nbsp; <span class="sc2">&lt;<span class="kw2">li</span>&gt;</span>i am 1<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">li</span>&gt;</span><br>
+&nbsp; &nbsp; &nbsp; &nbsp; <span class="sc2">&lt;<span class="kw2">li</span>&gt;</span>i am 2<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">li</span>&gt;</span><br>
+&nbsp; &nbsp; &nbsp; &nbsp; <span class="sc2">&lt;<span class="kw2">li</span>&gt;</span>i am 3<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">li</span>&gt;</span><br>
+&nbsp; &nbsp; <span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">ul</span>&gt;</span><br>
+<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">div</span>&gt;</span></div></td></tr></tbody></table></div>-->
+
+		<h2>document.getElementById <button onclick="alert($demoNode.innerHTML)">RUN</button></h2>
+<pre class="syntax javascript">
+var node = document.getElementById('idName');
+alert(node.innerHTML);</pre>
+		<!--<div class="codecolorer-container javascript railscasts" style="overflow:auto;white-space:nowrap;width:700px;"><table cellspacing="0" cellpadding="0"><tbody><tr><td class="line-numbers"><div>1<br>2<br>3<br></div></td><td><div class="javascript codecolorer"><span class="co1">//獲取node</span><br>
+<span class="kw2">var</span> node <span class="sy0">=</span> document.<span class="me1">getElementById</span><span class="br0">(</span><span class="st0">'idName'</span><span class="br0">)</span><span class="sy0">;</span><br>
+<span class="kw3">alert</span><span class="br0">(</span>node.<span class="me1">innerHTML</span><span class="br0">)</span><span class="sy0">;</span></div></td></tr></tbody></table></div>-->
+		
+		<h2>node.getElement<span style="color:red">s</span>ByTagName <button onclick="alert($demoNode.getElementsByTagName('li'))">RUN</button></h2>
+		
+		<pre class="syntax javascript">
+//獲取li的nodelist組合
+var node = document.getElementById('ul');
+ node.getElementsByTagName('li');</pre>
+		
+		<!--<div class="codecolorer-container javascript railscasts" style="overflow:auto;white-space:nowrap;width:700px;"><table cellspacing="0" cellpadding="0"><tbody><tr><td class="line-numbers"><div>1<br>2<br>3<br></div></td><td><div class="javascript codecolorer"><span class="co1">//獲取li的nodelist組合</span><br>
+<span class="kw2">var</span> node <span class="sy0">=</span> document.<span class="me1">getElementById</span><span class="br0">(</span><span class="st0">'ul'</span><span class="br0">)</span><span class="sy0">;</span><br>
+node.<span class="me1">getElementsByTagName</span><span class="br0">(</span><span class="st0">'li'</span><span class="br0">)</span><span class="sy0">;</span></div></td></tr></tbody></table></div>-->
+			
+	</section>
+	<section id="dom2" class="step slide">
+		<h2>獲取節點屬性：node.getAttribute/setAttribute</h2>
+		
+<pre class="syntax html">&lt;div id=&quot;idName&quot; node-type=&quot;hello&quot;&gt;
+     &lt;ul id=&quot;ul&quot;&gt;
+         &lt;li&gt;i am 1&lt;/li&gt;
+         &lt;li&gt;i am 2&lt;/li&gt;
+         &lt;li&gt;i am 3&lt;/li&gt;
+     &lt;/ul&gt;
+&lt;/div&gt;</pre>
+
+		
+		<!--<div class="codecolorer-container html4strict railscasts" style="overflow:auto;white-space:nowrap;width:700px;"><table cellspacing="0" cellpadding="0"><tbody><tr><td class="line-numbers"><div>1<br>2<br>3<br>4<br>5<br>6<br>7<br></div></td><td><div class="html4strict codecolorer"><span class="sc2">&lt;<span class="kw2">div</span> <span class="kw3">id</span><span class="sy0">=</span><span class="st0">"idName"</span> node-<span class="kw3">type</span><span class="sy0">=</span><span class="st0">"hello"</span>&gt;</span><br>
+&nbsp; &nbsp; <span class="sc2">&lt;<span class="kw2">ul</span> <span class="kw3">id</span><span class="sy0">=</span><span class="st0">"ul"</span>&gt;</span><br>
+&nbsp; &nbsp; &nbsp; &nbsp; <span class="sc2">&lt;<span class="kw2">li</span>&gt;</span>i am 1<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">li</span>&gt;</span><br>
+&nbsp; &nbsp; &nbsp; &nbsp; <span class="sc2">&lt;<span class="kw2">li</span>&gt;</span>i am 2<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">li</span>&gt;</span><br>
+&nbsp; &nbsp; &nbsp; &nbsp; <span class="sc2">&lt;<span class="kw2">li</span>&gt;</span>i am 3<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">li</span>&gt;</span><br>
+&nbsp; &nbsp; <span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">ul</span>&gt;</span><br>
+<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">div</span>&gt;</span></div></td></tr></tbody></table></div>-->
+	<br/>
+	<pre class="syntax javascript">
+var myNode = document.getElementById('idName');
+ myNode.getAttribute('node-type');</pre>
+	
+	<!--<div class="codecolorer-container javascript railscasts" style="overflow:auto;white-space:nowrap;width:700px;"><table cellspacing="0" cellpadding="0"><tbody><tr><td class="line-numbers"><div>1<br>2<br></div></td><td><div class="javascript codecolorer" style="white-space:nowrap"><span class="kw2">var</span> myNode <span class="sy0">=</span> document.<span class="me1">getElementById</span><span class="br0">(</span><span class="st0">'idName'</span><span class="br0">)</span><span class="sy0">;</span><br>
+myNode.<span class="me1">getAttribute</span><span class="br0">(</span><span class="st0">'node-type'</span><span class="br0">)</span><span class="sy0">;</span></div></td></tr></tbody></table></div>-->
+	
+	<p><button onclick="alert($demoNode.getAttribute('node-type'))">獲取node-type</button></p>
+	
+	<pre class="syntax javascript">
+var myNode = document.getElementById('idName');
+ myNode.setAttribute('node-type','world');</pre>
+	
+	<!--<div class="codecolorer-container javascript railscasts" style="overflow:auto;white-space:nowrap;width:700px;"><table cellspacing="0" cellpadding="0"><tbody><tr><td class="line-numbers"><div>1<br>2<br></div></td><td><div class="javascript codecolorer" style="white-space:nowrap"><span class="kw2">var</span> myNode <span class="sy0">=</span> document.<span class="me1">getElementById</span><span class="br0">(</span><span class="st0">'idName'</span><span class="br0">)</span><span class="sy0">;</span><br>
+myNode.<span class="me1">setAttribute</span><span class="br0">(</span><span class="st0">'node-type'</span><span class="sy0">,</span><span class="st0">'world'</span><span class="br0">)</span><span class="sy0">;</span></div></td></tr></tbody></table></div>-->
+	<p><button onclick="$demoNode.setAttribute('node-type','world');alert('修改成功')">修改node-type</button></p>
+	</section>
+	
+	<section id="dom3" class="step slide">
+		<h2>創建和刪除節點</h2>
+		
+		<p id="cNode"><b>實例</b>：hello </p>
+		<pre class="syntax html">
+<p id="cNode">hello </p></pre>
+		
+		<!--<div class="codecolorer-container html4strict railscasts" style="overflow:auto;white-space:nowrap;width:700px;"><table cellspacing="0" cellpadding="0"><tbody><tr><td class="line-numbers"><div>1<br></div></td><td><div class="html4strict codecolorer"><span class="sc2">&lt;<span class="kw2">p</span> <span class="kw3">id</span><span class="sy0">=</span><span class="st0">"cNode"</span>&gt;</span>hello <span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">p</span>&gt;</span></div></td></tr></tbody></table></div>-->
+		<p>創建：createElement/createTextNode<button onclick="createNode()">創建節點</button></p>
+		<pre class="syntax javascript">
+//創建元素節點
+var $span = document.createElement('span');
+//創建文字節點
+var $text = document.createTextNode('world!');
+ $span.style.color = 'red';//給點color see see
+ $span.appendChild($text);
+//獲取插入父節點
+var node = document.getElementById('cNode');
+ node.appendChild($span);</pre>
+		
+		<!--<div class="codecolorer-container javascript railscasts" style="overflow:auto;white-space:nowrap;width:700px;"><table cellspacing="0" cellpadding="0"><tbody><tr><td class="line-numbers"><div>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br></div></td><td><div class="javascript codecolorer"><span class="co1">//創建元素節點</span><br>--
+<span class="kw2">var</span> $span <span class="sy0">=</span> document.<span class="me1">createElement</span><span class="br0">(</span><span class="st0">'span'</span><span class="br0">)</span><span class="sy0">;</span><br>
+<span class="co1">//創建文字節點</span><br>
+<span class="kw2">var</span> $text <span class="sy0">=</span> document.<span class="me1">createTextNode</span><span class="br0">(</span><span class="st0">'world!'</span><span class="br0">)</span><span class="sy0">;</span><br>
+$span.<span class="me1">style</span>.<span class="me1">color</span> <span class="sy0">=</span> <span class="st0">'red'</span><span class="sy0">;</span><span class="co1">//給點color see see</span><br>
+$span.<span class="me1">appendChild</span><span class="br0">(</span>$text<span class="br0">)</span><span class="sy0">;</span><br>
+<span class="co1">//獲取插入父節點</span><br>
+<span class="kw2">var</span> node <span class="sy0">=</span> document.<span class="me1">getElementById</span><span class="br0">(</span><span class="st0">'cNode'</span><span class="br0">)</span><span class="sy0">;</span><br>
+node.<span class="me1">appendChild</span><span class="br0">(</span>$span<span class="br0">)</span><span class="sy0">;</span></div></td></tr></tbody></table></div>-->
+	
+	<p>刪除：.removeChild<button onclick="removeNode()">刪除節點</button></p>
+	<pre class="syntax javascript">
+var node = document.getElementById('cNode');//獲取p
+ node = node.getElementsByTagName('span')[0];//獲取span列表，取第一個
+ node.parentNode.removeChild(node);//刪除</pre>
+	
+	<!--<div class="codecolorer-container javascript railscasts" style="overflow:auto;white-space:nowrap;width:780px;"><table cellspacing="0" cellpadding="0"><tbody><tr><td class="line-numbers"><div>1<br>2<br>3<br></div></td><td><div class="javascript codecolorer"><span class="kw2">var</span> node <span class="sy0">=</span> document.<span class="me1">getElementById</span><span class="br0">(</span><span class="st0">'cNode'</span><span class="br0">)</span><span class="sy0">;</span><span class="co1">//獲取p</span><br>
+node <span class="sy0">=</span> node.<span class="me1">getElementsByTagName</span><span class="br0">(</span><span class="st0">'span'</span><span class="br0">)</span><span class="br0">[</span><span class="nu0">0</span><span class="br0">]</span><span class="sy0">;</span><span class="co1">//獲取span列表，取第一個</span><br>
+node.<span class="me1">parentNode</span>.<span class="me1">removeChild</span><span class="br0">(</span>node<span class="br0">)</span><span class="sy0">;</span><span class="co1">//刪除</span></div></td></tr></tbody></table></div>-->
+	
+	<script type="text/javascript">
+	function createNode(){
+		//創建元素節點
+		var $span = document.createElement('span');
+		//創建文字節點
+		var $text = document.createTextNode('world!');
+		$span.style.color = 'red';//給點color see see
+		$span.appendChild($text);
+		//獲取插入父節點
+		var node = document.getElementById('cNode');
+		node.appendChild($span);
+	}
+	function removeNode(){
+		var node = document.getElementById('cNode').getElementsByTagName('span')[0];
+		node.parentNode.removeChild(node);
+	}
+</script>
+	</section>
+	
+	<section id="dom4" class="step slide rebuild">
+		<h2>節點關係</h2>
+		<div data-build>
+		
+		<pre class="syntax html">
+&lt;p&gt;
+     &lt;strong&gt;Hello&lt;/strong&gt;
+     how are you doing?
+&lt;/p&gt;</pre>
+		
+		<!--<div class="codecolorer-container html4strict railscasts" style="overflow:auto;white-space:nowrap;width:700px;"><table cellspacing="0" cellpadding="0"><tbody><tr><td class="line-numbers"><div>1<br>2<br>3<br>4<br></div></td><td><div class="html4strict codecolorer"><span class="sc2">&lt;<span class="kw2">p</span>&gt;</span><br>
+&nbsp; &nbsp; <span class="sc2">&lt;<span class="kw2">strong</span>&gt;</span>Hello<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">strong</span>&gt;</span><br>
+&nbsp; &nbsp; how are you doing?<br>
+<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">p</span>&gt;</span></div></td></tr></tbody></table></div>
+		<center style="margin-top:20px;"><img src="./src/img/udc18.png" alt="" /></center>
+	</div>-->
+	</section>
+	
+	<section id="json" class="step slide rebuild">
+		<h1>JSON</h1>
+		<p>JSON(JavaScript Object Notation) 是一種輕量級的數據交換格式</p>
+		<p><a href="http://www.json.org">http://www.json.org</a></p>
+		<div data-build>
+		
+		<pre class="syntax javascript">
+{
+ 　"name":"張三",
+ 　"password":"123456",
+ 　"department":"技術部",
+ 　"sex":"男",
+ 　"old":30
+}</pre>
+		
+		<!--<div class="codecolorer-container javascript railscasts" style="overflow:auto;white-space:nowrap;width:700px;"><table cellspacing="0" cellpadding="0"><tbody><tr><td class="line-numbers"><div>1<br>2<br>3<br>4<br>5<br>6<br>7<br></div></td><td><div class="javascript codecolorer"><span class="br0">{</span><br>
+　<span class="st0">"name"</span><span class="sy0">:</span><span class="st0">"張三"</span><span class="sy0">,</span><br>
+　<span class="st0">"password"</span><span class="sy0">:</span><span class="st0">"123456"</span><span class="sy0">,</span><br>
+　<span class="st0">"department"</span><span class="sy0">:</span><span class="st0">"技術部"</span><span class="sy0">,</span><br>
+　<span class="st0">"sex"</span><span class="sy0">:</span><span class="st0">"男"</span><span class="sy0">,</span><br>
+　<span class="st0">"old"</span><span class="sy0">:</span><span class="nu0">30</span><br>
+<span class="br0">}</span></div></td></tr></tbody></table></div>-->
+
+<pre class="syntax html">
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;user&gt;
+&lt;name&gt;張三&lt;/name&gt;
+&lt;password&gt;123456&lt;/password&gt;
+&lt;department&gt;技術部&lt;/department&gt;
+&lt;sex&gt;男&lt;/sex&gt;
+&lt;old&gt;30&lt;/old&gt;
+&lt;/user&gt;</pre>
+
+<!--
+<div class="codecolorer-container xml railscasts" style="overflow:auto;white-space:nowrap;width:700px;margin-top:20px"><table cellspacing="0" cellpadding="0"><tbody><tr><td class="line-numbers"><div>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br></div></td><td><div class="xml codecolorer"><span class="sc3"><span class="re1">&lt;?xml</span> <span class="re0">version</span>=<span class="st0">"1.0"</span> <span class="re0">encoding</span>=<span class="st0">"utf-8"</span><span class="re2">?&gt;</span></span><br>
+<span class="sc3"><span class="re1">&lt;user<span class="re2">&gt;</span></span></span><br>
+<span class="sc3"><span class="re1">&lt;name<span class="re2">&gt;</span></span></span>張三 <span class="sc3"><span class="re1">&lt;/name<span class="re2">&gt;</span></span></span><br>
+<span class="sc3"><span class="re1">&lt;password<span class="re2">&gt;</span></span></span>123456<span class="sc3"><span class="re1">&lt;/password<span class="re2">&gt;</span></span></span><br>
+<span class="sc3"><span class="re1">&lt;department<span class="re2">&gt;</span></span></span>技術部<span class="sc3"><span class="re1">&lt;/department<span class="re2">&gt;</span></span></span><br>
+<span class="sc3"><span class="re1">&lt;sex<span class="re2">&gt;</span></span></span>男<span class="sc3"><span class="re1">&lt;/sex<span class="re2">&gt;</span></span></span><br>
+<span class="sc3"><span class="re1">&lt;old<span class="re2">&gt;</span></span></span>30<span class="sc3"><span class="re1">&lt;/old<span class="re2">&gt;</span></span></span><br>
+<span class="sc3"><span class="re1">&lt;/user<span class="re2">&gt;</span></span></span></div></td></tr></tbody></table></div>-->
+
+</div>
+	</section>
+	
+	<section id="json1" class="step slide rebuild">
+		<h2>JSON應用</h2>
+		<p>json作為一種數據交換格式，經常應用在數據傳輸、數據儲存等方面</p>
+		<div data-build><center></center>
+		</div>
+	</section>
+	
+	<section id="jsonp" class="step slide rebuild">
+		<h1>JSONP</h1>
+		<p>JSONP是一個非官方的協議，它允許在伺服器端集成Script tags返回至客戶端，通過javascript callback的形式實現跨域訪問</p>
+		<div data-build>
+		</div>
+		
+	</section>
+	
+	<section id="other" class="step slide rebuild">
+		<h1>其他</h1>
+		<ul>
+			<li>event事件處理</li>
+			<li>ajax請求</li>
+			<li>javascript框架</li>
+			<li style="list-style:none;">
+				<ul>
+					<li style="list-style:square inside">jQuery/YUI/prototype/STK...</li>
+				</ul>
+			</li>
+		</ul>
+		<p style="margin-top:20px">一個JavaScript框架或庫實際上是一系列工具和函數，它能更容易產生跨瀏覽器兼容的JavaScript原始碼。</p>
+		<ul data-build>
+			<li>選擇器</li>
+			<li>事件處理</li>
+			<li>DOM操作</li>
+			<li>實用函數</li>
+			<li>Ajax</li>
+		</ul>
+	</section>
+	<section id="html5" class="step slide rebuild">
+		<h1>未來</h1>
+		<h2>HTML5</h2>
+		<ul data-build>
+			<li>未來的(x)html和DOM標準，仍然處於完善階段，不過市面上的瀏覽器已經開始支持html5</li>
+			<li>語義化標記</li>
+			<li>圖像處理</li>
+			<li>媒體支持</li>
+			<li>改善用戶界面</li>
+			<li>網路存儲</li>
+			<li>網路通信</li>
+			<li>移動設備支持</li>
+			<li>增強可訪問性</li>
+		</ul>
+		<img src="./src/img/udc9.png" style="position:absolute;right:300px;top:300px;" />
+	</section>
+	
+	<section id="map" class="step slide rebuild">
+		<h2>HTML5實例：地圖定位</h2>
+		<div style="width:500px;height:400px;border:#ccc solid 1px;margin:0 auto;" id="dituContent"></div>
+		<center><button onclick="initMap();">顯示地圖</button>
+		<button onclick="getGeo()">定位</button></center>
+	</section>
+	
+	<script type="text/javascript">
+var map ;
+    //創建和初始化地圖函數：
+    function initMap(){
+        createMap();//創建地圖
+        setMapEvent();//設置地圖事件
+        addMapControl();//向地圖添加控件
+    }
+    
+    //創建地圖函數：
+    function createMap(){
+        map = new BMap.Map("dituContent");//在百度地圖容器中創建一個地圖
+        var point = new BMap.Point(121.565418,25.032969);//定義一個中心點坐標
+        map.centerAndZoom(point,12);//設定地圖的中心點和坐標並將地圖顯示在地圖容器中
+        translateCallback(point);
+       // window.map = map;//將map變數存儲在全局
+    }
+    
+    //地圖事件設置函數：
+    function setMapEvent(){
+        map.enableDragging();//啟用地圖拖拽事件，默認啟用(可不寫)
+        map.enableScrollWheelZoom();//啟用地圖滾輪放大縮小
+        map.enableDoubleClickZoom();//啟用鼠標雙擊放大，默認啟用(可不寫)
+        map.enableKeyboard();//啟用鍵盤上下左右鍵移動地圖
+    }
+    
+    //地圖控件添加函數：
+    function addMapControl(){
+        //向地圖中添加縮放控件
+	var ctrl_nav = new BMap.NavigationControl({anchor:BMAP_ANCHOR_TOP_LEFT,type:BMAP_NAVIGATION_CONTROL_ZOOM});
+	map.addControl(ctrl_nav);
+        //向地圖中添加縮略圖控件
+	var ctrl_ove = new BMap.OverviewMapControl({anchor:BMAP_ANCHOR_BOTTOM_RIGHT,isOpen:0});
+	map.addControl(ctrl_ove);
+        //向地圖中添加比例尺控件
+	var ctrl_sca = new BMap.ScaleControl({anchor:BMAP_ANCHOR_BOTTOM_LEFT});
+	map.addControl(ctrl_sca);
+    }
+	var translateCallback = function (point){
+		map.clearOverlays();
+		var marker = new BMap.Marker(point);
+		map.addOverlay(marker);
+		map.setCenter(point);
+	}
+    function getPositionSuccess(position){
+		//alert(position.coords.latitude);
+		//return;
+		//console.log(position.coords);
+		var point = new BMap.Point(position.coords.longitude, position.coords.latitude);
+		map.centerAndZoom(point,15);
+		translateCallback(point);
+		return;
+		
+	}
+    function getPositionError(error){
+		switch (error.code) {
+			case error.TIMEOUT:
+				alert(" 連接超時，請重試 ");
+				break;
+			case error.PERMISSION_DENIED:
+				alert(" 您拒絕了使用定位分享服務，查詢已取消 ");
+				break;
+			case error.POSITION_UNAVAILABLE:
+				alert(" 親愛的火星網友，非常抱歉，我們暫時無法為您所在的星球提供位置服務 ");
+				break;
+		}
+	}
+	function getGeo(){
+		if (navigator.geolocation) {
+			navigator.geolocation.getCurrentPosition(getPositionSuccess, getPositionError);
+		}
+		else {
+			alert("你的瀏覽器不支持geolocation哦~");
+		}
+	}
+    //initMap();//創建和初始化地圖
+</script>
+	<section id="node" class="step slide rebuild">
+		<h2>node.js</h2>
+		<ul data-build>
+			<li>伺服器端js</li>
+			<li>單執行緒</li>
+			<li>非阻塞IO</li>
+			<li>Google V8</li>
+			<li>事件驅動</li>
+		</ul>
+		<center><img src="./src/img/udc8.png" alt="" /></center>
+
+	</section>
+	
+	<section id="editor" class="step slide rebuild">
+		<h2>編輯器</h2>
+		<ul>
+			<li>IDE:Apanta、webStorm、eclipse</li>
+			<li>文字編輯器：NotePad++、記事本、Sublime Text2……</li>
+			<li>達人利器：vim</li>
+		</ul>
+		
+	</section>
+	
+	<section id="debug" class="step slide">
+		<h2>Debug工具</h2>
+		<ul>
+			<li>Firefox：firebug</li>
+			<li>IE：debugBar， Companion.js</li>
+			<li>Chrome：開發者工具</li>
+		
+		</ul>
+		<img src="./src/img/udc12.png" style="position:absolute;right:0;bottom:0" />
+	</section>
+	
+	<section id="jslint" class="step slide rebuild">
+		<h2>js原始碼質量檢測工具：JSLint</h2>
+		<ul>
+			<li><strong>JSLint</strong> 是 Douglas Crockford 創建的js原始碼質量檢測工具。雖然 JSLint 不能保證原始碼邏輯一定正確，但卻有助於發現錯誤並教會開發人員一些好的編碼實踐。 </li>
+		</ul>
+		<center data-build><img src="./src/img/udc13.png" style="height:400px" /></center>
+		
+	</section>
+	
+	<section id="resource" class="step slide">
+		<h1>學習資料</h1>
+		<ul>
+			<li><a href="http://jstherightway.org/">http://jstherightway.org/</a></li>
+		</ul>
+		<footer>
+			
+		</footer>
+	</section>
+	
+	<section id="quetion" class="step" >
+         <section class="title"><h1>Question?<br/><b>Q&A</b></h1></section>
+    </section>
+	<section id="end" class="step" >
+        <section class="title"><h1>The End<br/><b>Thank You</b></h1></section>
+    </section>
+</div>
+<div class="progress"><span></span></div>
+</div>
+<canvas id="myCanvas" width="1024" height="768">您的瀏覽器不支持HTML5,請升級或更換您的瀏覽器,強烈推薦您使用chrome瀏覽器。</canvas>
+<menu class="controls" id="slideCtrl">
+	<span class="tool home" onclick="location.hash='#cover'">!</span>
+	<span class="tool left">←</span>
+	<span class="tool right">→</span>
+	<span class="tool paint">p</span>
+	<span class="tool clearIt">d</span>
+</menu>
+<script type="text/javascript" src="http://api.map.baidu.com/api?key=&v=1.3&services=true"></script>
+<script type="text/javascript" src="./src/js/webslideo.js"></script>
+<script type="text/javascript">
+			$(function() {
+				jQuery.syntax({theme: 'grey', blockLayout: 'fixed'});
+			});
+		</script>
+
+</body>
+</html>
