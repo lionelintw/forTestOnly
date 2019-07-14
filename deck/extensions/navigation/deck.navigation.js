@@ -13,22 +13,22 @@ This module adds clickable previous and next links to the deck.
 
   /* Updates link hrefs, and disabled states if last/first slide */
   var updateButtons = function(event, from, to) {
-    var options = $.deck('getOptions');
-    var lastIndex = $.deck('getSlides').length - 1;
-    var $prevSlide = $.deck('getSlide', to - 1);
-    var $nextSlide = $.deck('getSlide', to + 1);
-    var hrefBase = window.location.href.replace(/#.*/, '');
-    var prevId = $prevSlide ? $prevSlide.attr('id') : undefined;
-    var nextId = $nextSlide ? $nextSlide.attr('id') : undefined;
+    var options = $.deck("getOptions");
+    var lastIndex = $.deck("getSlides").length - 1;
+    var $prevSlide = $.deck("getSlide", to - 1);
+    var $nextSlide = $.deck("getSlide", to + 1);
+    var hrefBase = window.location.href.replace(/#.*/, "");
+    var prevId = $prevSlide ? $prevSlide.attr("id") : undefined;
+    var nextId = $nextSlide ? $nextSlide.attr("id") : undefined;
     var $prevButton = $(options.selectors.previousLink);
     var $nextButton = $(options.selectors.nextLink);
 
     $prevButton.toggleClass(options.classes.navDisabled, to === 0);
-    $prevButton.attr('aria-disabled', to === 0);
-    $prevButton.attr('href', hrefBase + '#' + (prevId ? prevId : ''));
+    $prevButton.attr("aria-disabled", to === 0);
+    $prevButton.attr("href", hrefBase + "#" + (prevId ? prevId : ""));
     $nextButton.toggleClass(options.classes.navDisabled, to === lastIndex);
-    $nextButton.attr('aria-disabled', to === lastIndex);
-    $nextButton.attr('href', hrefBase + '#' + (nextId ? nextId : ''));
+    $nextButton.attr("aria-disabled", to === lastIndex);
+    $nextButton.attr("href", hrefBase + "#" + (nextId ? nextId : ""));
   };
 
   /*
@@ -49,33 +49,38 @@ This module adds clickable previous and next links to the deck.
   */
   $.extend(true, $.deck.defaults, {
     classes: {
-      navDisabled: 'deck-nav-disabled'
+      navDisabled: "deck-nav-disabled"
     },
 
     selectors: {
-      nextLink: '.deck-next-link',
-      previousLink: '.deck-prev-link'
+      nextLink: ".deck-next-link",
+      previousLink: ".deck-prev-link"
     }
   });
 
-  $document.bind('deck.init', function() {
-    var options = $.deck('getOptions');
-    var slides = $.deck('getSlides');
-    var $current = $.deck('getSlide');
+  $document.bind("deck.init", function() {
+    var options = $.deck("getOptions");
+    var slides = $.deck("getSlides");
+    var $current = $.deck("getSlide");
     var $prevButton = $(options.selectors.previousLink);
     var $nextButton = $(options.selectors.nextLink);
     var index;
 
     // Setup prev/next link events
-    $prevButton.unbind('click.decknavigation');
-    $prevButton.bind('click.decknavigation', function(event) {
-      $.deck('prev');
+    $prevButton.unbind("click.decknavigation");
+    $prevButton.bind("click.decknavigation", function(event) {
+      $.deck("prev");
       event.preventDefault();
     });
-
-    $nextButton.unbind('click.decknavigation');
-    $nextButton.bind('click.decknavigation', function(event) {
-      $.deck('next');
+    $document.keydown(function(event) {
+      if (event.which == 9) {
+        $.deck("next");
+        event.preventDefault();
+      }
+    });
+    $nextButton.unbind("click.decknavigation");
+    $nextButton.bind("click.decknavigation", function(event) {
+      $.deck("next");
       event.preventDefault();
     });
 
@@ -89,6 +94,5 @@ This module adds clickable previous and next links to the deck.
     updateButtons(null, index, index);
   });
 
-  $document.bind('deck.change', updateButtons);
+  $document.bind("deck.change", updateButtons);
 })(jQuery);
-
