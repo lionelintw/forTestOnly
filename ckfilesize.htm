@@ -15,85 +15,79 @@
 <input type="file" name="file2" class="file" /><br />
 <input type="file" name="file3" class="file" /><br />
 <script>
-$("document").ready(function () {	
-    function chksize(){
-        var s = 0;
-        $(".file").each(function () {
-            if($(this).val()){                
-             /*@cc_on 
-             if (@_jscript_version <= 9){
-             $(this).next().remove("img");
-             var img1 = new Image();
-             $(this).after(img1);
-             img1.src = $(this).val();
-             img1.id = $(this).attr("name");
-             var img_id1 = img1.id;
-                document.getElementById(img_id1).style.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale, src='" + $(this).val() + "')";
-                document.getElementById(img_id1).style.width = "200px";
-                document.getElementById(img_id1).style.height = "200px";
-                try 
-                {
-                    var objFSO = new ActiveXObject("Scripting.FileSystemObject");
-                    var sPath = $(this).val();
-                    var objFile = objFSO.getFile(sPath);
-                    var f = objFile.size / 1024;
-                }
-                catch (e) 
-                {
-                    alert("您若使用Windows Internet Explorer,請將本站加入「信任的網站」並至工具→網際網路選項→安全性→信任的網站→自訂等(層)級→起始不標示為安全的ActiveX控制項→勾選為「啟用」！");
-                } 
-                
-             }  
-             @*/
-             if(document.documentMode > 9 || !document.all)
-             {               
-             $(this).next().remove("img");             	
-             var img2 = new Image();
-             $(this).after(img2);
-             img2.src = "./default_blank.png";
-             img2.id = $(this).attr("name");
-             var img_id2 = img2.id;
-   	         var oFReader = new FileReader();
-             oFReader.readAsDataURL(this.files[0]);
-             oFReader.onload = function (oFREvent) {
-             document.getElementById(img_id2).src = oFREvent.target.result;
-             document.getElementById(img_id2).style.width = "200px";
-             //document.getElementById(img_id2).style.height = "200px";
-                };   
-                var f = this.files[0].size / 1024;
-             }              
-			 s += f;
-            }
-        });
-        if (s / 1024 > 1) 
-        { 
-            if (((s / 1024) / 1024) > 1) 
-            { 
-                s = (Math.round(((s / 1024) / 1024) * 100) / 100);
-                s += "Gb"; 
-            }
-            else
-            { 
-                s = (Math.round((s / 1024) * 100) / 100)
-                s += "Mb"; 
-            } 
-        } 
-        else 
-        {
-            s = (Math.round(s * 100) / 100)
-            s  += "kb"; 
-        }
-        alert(s);
-    }
-    $(".file").change(function () {
-        try
-        {
-            chksize();
-        }
-        catch (e) 
-        {alert("您的瀏覽器不支援檔案偵測功能");}
-    });
+$("document").ready(function () {
+	function chksize() {
+		var s = 0;
+		$(".file").each(function () {
+			if ($(this).val()) {
+				if (document.documentMode > 9 || !document.all) {
+
+					$(this).next().remove("img");
+					var img2 = new Image();
+					$(this).after(img2);
+					img2.src = "./default_blank.png";
+					img2.id = $(this).attr("name");
+					var img_id2 = img2.id;
+
+					var reader = new FileReader();
+
+					reader.onload = function (e) {
+						imageExists(e.target.result, function (exists) {
+							if (exists) {
+
+								// Do something with the image file..
+								document.getElementById(img_id2).src = e.target.result;
+								document.getElementById(img_id2).style.width = "200px";
+
+							} else {
+
+								// different file format
+
+							}
+						});
+					};
+					reader.readAsDataURL(this.files[0]);
+
+					function imageExists(url, callback) {
+						var img = new Image();
+						img.onload = function () {
+							callback(true);
+						};
+						img.onerror = function () {
+							callback(false);
+						};
+						img.src = url;
+					}
+
+				};
+				var f = this.files[0].size / 1024;
+
+				s += f;
+			}
+		});
+		if (s / 1024 > 1) {
+			if (((s / 1024) / 1024) > 1) {
+				s = (Math.round(((s / 1024) / 1024) * 100) / 100);
+				s += "Gb";
+			} else {
+				s = (Math.round((s / 1024) * 100) / 100)
+				s += "Mb";
+			}
+		} else {
+			s = (Math.round(s * 100) / 100)
+			s += "kb";
+		}
+		alert(s);
+	}
+	$(".file").change(function () {
+		try {
+			chksize();
+		} catch (e) {
+			alert("您的瀏覽器不支援檔案偵測功能");
+		}
+	});
 });
+
 </script>
 </body>
 </html>
