@@ -1,4 +1,4 @@
-describe('Deck JS Status Indicator', function() {
+describe('Deck JS Scale', function() {
   beforeEach(function() {
     loadFixtures('standard.html');
     if (Modernizr.history) {
