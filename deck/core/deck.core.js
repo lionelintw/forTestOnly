@@ -21,7 +21,7 @@ that use the API provided by core.
     /*
     This event fires at the beginning of a slide change, before the actual
     change occurs. Its purpose is to give extension authors a way to prevent
-    the slide change from occuring. This is done by calling preventDefault
+    the slide change from occurring. This is done by calling preventDefault
     on the event object within this event. If that is done, the deck.change
     event will never be fired and the slide will not change.
     */
@@ -687,7 +687,7 @@ that use the API provided by core.
 
   options.setAriaHiddens
     When set to true, deck.js will set aria hidden attributes for slides
-    that do not appear onscreen according to a typical heirarchical
+    that do not appear onscreen according to a typical hierarchical
     deck structure. You may want to turn this off if you are using a theme
     where slides besides the current slide are visible on screen and should
     be accessible to screenreaders.
