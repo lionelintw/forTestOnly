@@ -52,7 +52,7 @@ class Dl
         $chunk = 10 * 1024 * 1024; // bytes per chunk (10 MB)
         $fh = fopen($targetFile, "rb");
         while (!feof($fh)) {
-            echo fread($handle, $chunk);
+            echo fread($fh, $chunk);
             ob_flush();  // flush output
             flush();
         }
